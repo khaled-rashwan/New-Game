@@ -98,9 +98,15 @@
 
   .header__inline-search .field__input {
     padding: 1rem 4rem 1rem 1.5rem;
-    border-radius: 0.4rem;
-    border: 0.1rem solid rgba(var(--color-foreground), 0.2);
-    background-color: rgba(var(--color-foreground), 0.04);
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.15);
+    background-color: rgba(var(--color-foreground), 0.05);
+    font-size: 1.4rem;
+  }
+
+  .header__inline-search .field__input:focus {
+    border-color: rgba(var(--color-foreground), 0.3);
+    background-color: rgb(var(--color-background));
   }
 
   .header__inline-search .search__button {
@@ -109,26 +115,30 @@
     top: 50%;
     transform: translateY(-50%);
     padding: 0.5rem;
+    background: transparent;
+    border: none;
   }
 
   .header__login-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
-    background-color: rgb(var(--color-foreground));
-    color: rgb(var(--color-background));
+    padding: 1.2rem 2.4rem;
+    background-color: #2c2c2c;
+    color: #ffffff;
     text-decoration: none;
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
     font-weight: 500;
+    font-size: 1.4rem;
     white-space: nowrap;
     margin-left: 1.5rem;
-    transition: opacity 0.2s ease;
+    transition: background-color 0.2s ease;
+    border: none;
   }
 
   .header__login-button:hover {
-    opacity: 0.85;
-    color: rgb(var(--color-background));
+    background-color: #1a1a1a;
+    color: #ffffff;
   }
 
   @media screen and (min-width: 990px) {
@@ -142,17 +152,32 @@
       justify-self: center;
       margin-top: 0;
     }
+
+    .header__icons .header__icon--account,
+    .header__icons .header__icon--cart {
+      display: none;
+    }
+
+    .header__right-section .header__icon--account,
+    .header__right-section .header__icon--cart {
+      display: none;
+    }
   }
 
   @media screen and (max-width: 989px) {
     .header__inline-search {
       max-width: 100%;
-      margin: 1rem 0;
+      margin: 1rem 0 0 0;
+    }
+
+    .header__inline-search .field__input {
+      padding: 1.2rem 4rem 1.2rem 1.5rem;
     }
 
     .header__login-button {
       width: 100%;
       margin: 1rem 0 0 0;
+      padding: 1.4rem 2rem;
     }
 
     .header__mobile-bottom {
@@ -160,6 +185,7 @@
       flex-direction: column;
       width: 100%;
       grid-column: 1 / -1;
+      padding-bottom: 1rem;
     }
   }
 </style>
@@ -611,6 +637,7 @@
                 placeholder="{{ 'general.search.search' | t }}"
                 aria-label="{{ 'general.search.search' | t }}"
               >
+              <label class="field__label visually-hidden" for="Search-In-Header">{{ 'general.search.search' | t }}</label>
               <input type="hidden" name="options[prefix]" value="last">
               <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
                 <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
@@ -750,6 +777,7 @@
                 placeholder="{{ 'general.search.search' | t }}"
                 aria-label="{{ 'general.search.search' | t }}"
               >
+              <label class="field__label visually-hidden" for="Search-In-Header-Mobile">{{ 'general.search.search' | t }}</label>
               <input type="hidden" name="options[prefix]" value="last">
               <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
                 <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
