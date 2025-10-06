@@ -12,6 +12,7 @@
     "main": {
       "type": "main-register",
       "settings": {
+        "logo": "shopify://shop_images/73542b279f7f4ac3f8146ed85870df7735521010.png",
         "background_image": "shopify://shop_images/Container.png",
         "subtitle": "Join the Board Game community",
         "padding_top": 36,
