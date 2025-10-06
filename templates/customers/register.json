@@ -11,6 +11,9 @@
   "sections": {
     "main": {
       "type": "main-register",
+      "custom_css": [
+        ".register__card button {width: 100%; padding: 15px; background: linear-gradient(90deg, #4ADE80 0%, #14B8A6 100%);}"
+      ],
       "settings": {
         "logo": "shopify://shop_images/73542b279f7f4ac3f8146ed85870df7735521010.png",
         "background_image": "shopify://shop_images/Container.png",
