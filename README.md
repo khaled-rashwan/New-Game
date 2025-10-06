@@ -1,1 +1,0 @@
-A modern, responsive Shopify website for a board game store based on a Figma design. Built using Shopify Liquid, HTML, CSS, and JavaScript with a focus on clean UI, smooth UX, and fast performance. Implements pixel-perfect design, responsive layout, and follows Shopify Online Store .
