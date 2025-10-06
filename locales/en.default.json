@@ -351,7 +351,7 @@
       "guest_continue": "Continue",
       "guest_title": "Continue as a guest",
       "password": "Password",
-      "password_placeholder": "Enter your password",
+      "password_placeholder": "Enter password",
       "title": "Login",
       "sign_in": "Sign in",
       "submit": "Submit"
@@ -405,7 +405,7 @@
       "email": "Email Address",
       "email_placeholder": "Enter your email address",
       "password": "Password",
-      "password_placeholder": "Enter a strong password",
+      "password_placeholder": "Enter password",
       "submit": "Create Account",
       "login_prompt": "Already have an account?"
     },
