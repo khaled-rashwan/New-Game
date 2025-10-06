@@ -2285,6 +2285,44 @@ input[type='checkbox'] {
   .header:not(.header--middle-left) .header__inline-menu {
     margin-top: 1.05rem;
   }
+
+  /* Enhanced header layout for inline search */
+  .header--middle-left.header--enhanced {
+    grid-template-areas: 'heading navigation icons';
+    grid-template-columns: auto 1fr auto;
+    column-gap: 2rem;
+  }
+
+  .header--enhanced .header__inline-menu {
+    justify-self: center;
+  }
+
+  .header--enhanced .header__icons {
+    justify-self: end;
+  }
+
+  .header--enhanced .header__mobile-bottom {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .header--enhanced {
+    grid-template-areas: 
+      'left-icon heading icons'
+      'mobile-bottom mobile-bottom mobile-bottom';
+    grid-template-rows: auto auto;
+  }
+
+  .header__mobile-bottom {
+    grid-area: mobile-bottom;
+    margin-top: 1rem;
+  }
+
+  .header--enhanced .header__right-section .header__inline-search,
+  .header--enhanced .header__right-section .header__login-button {
+    display: none;
+  }
 }
 
 .header *[tabindex='-1']:focus {
