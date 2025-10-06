@@ -18,7 +18,6 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
     position: relative;
     overflow: hidden;
   }
@@ -28,6 +27,9 @@
     content: '';
     position: absolute;
     border-radius: 50%;
+    {% if section.settings.background_image != blank %}
+      display: none;
+    {% endif %}
   }
 
   .customer.register::before {
@@ -125,7 +127,7 @@
   .register__card button {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(to right, #26a69a, #80cbc4);
+    background: linear-gradient(to right, #50E3C2, #28B4A6);
     color: white;
     border: none;
     border-radius: 10px;
@@ -135,7 +137,7 @@
   }
 
   .register__card button:hover {
-    background: linear-gradient(to right, #00897b, #4db6ac);
+    background: linear-gradient(to right, #28B4A6, #50E3C2);
   }
 
   .register__signin {
@@ -205,13 +207,12 @@
       <div class="field">
         <input
           type="text"
-          name="customer[full_name]"
           id="RegisterForm-FullName"
           autocomplete="name"
-          placeholder="Enter your full name"
+          placeholder="{{ 'customer.register.full_name_placeholder' | t }}"
         >
         <label for="RegisterForm-FullName">
-          Full Name
+          {{ 'customer.register.full_name' | t }}
         </label>
       </div>
 
@@ -231,10 +232,10 @@
             aria-invalid="true"
             aria-describedby="RegisterForm-email-error"
           {% endif %}
-          placeholder="Enter your email address"
+          placeholder="{{ 'customer.register.email_placeholder' | t }}"
         >
         <label for="RegisterForm-email">
-          Email Address
+          {{ 'customer.register.email' | t }}
         </label>
       </div>
       {%- if form.errors contains 'email' -%}
@@ -256,10 +257,10 @@
             aria-invalid="true"
             aria-describedby="RegisterForm-password-error"
           {% endif %}
-          placeholder="Enter a strong password"
+          placeholder="{{ 'customer.register.password_placeholder' | t }}"
         >
         <label for="RegisterForm-password">
-          Password
+          {{ 'customer.register.password' | t }}
         </label>
       </div>
       {%- if form.errors contains 'password' -%}
@@ -276,12 +277,25 @@
       </button>
     {%- endform -%}
     <div class="register__signin">
-      <p>Already have an account? <a href="{{ routes.account_login_url }}">Sign in</a></p>
+      <p>{{ 'customer.register.login_prompt' | t }} <a href="{{ routes.account_login_url }}">{{ 'customer.login_page.sign_in' | t }}</a></p>
     </div>
   </div>
 </div>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    {% if section.settings.background_image != blank %}
+      body.style.backgroundImage = "url('{{ section.settings.background_image | image_url: width: 1920, height: 1080 }}')";
+      body.style.backgroundSize = 'cover';
+      body.style.backgroundPosition = 'center';
+      body.style.backgroundRepeat = 'no-repeat';
+      body.style.minHeight = '100vh';
+    {% else %}
+      body.style.background = 'linear-gradient(to bottom right, #f0f4f8, #d9e2ec)';
+    {% endif %}
+  });
+
   document.getElementById('create_customer').addEventListener('submit', function(e) {
     const fullName = document.getElementById('RegisterForm-FullName').value;
     const nameParts = fullName.trim().split(' ');
@@ -302,6 +316,11 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
     },
     {
       "type": "text",
