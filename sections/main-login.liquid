@@ -143,7 +143,14 @@
     background: linear-gradient(to right, #28B4A6, #50E3C2);
   }
 
-  .login__forgot-password,
+  .login__forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
   .login__register,
   .login__cancel-recover {
     margin-top: 20px;
@@ -237,7 +244,7 @@
         <div class="field">
           <input type="email" value="" name="email" id="RecoverEmail" autocorrect="off" autocapitalize="off" autocomplete="email"
             {% if form.errors %} aria-invalid="true" aria-describedby="RecoverEmail-email-error" autofocus {% endif %}
-            placeholder="{{ 'customer.login_page.email' | t }}">
+            placeholder="{{ 'customer.login_page.email_placeholder' | t }}">
           <label for="RecoverEmail">{{ 'customer.login_page.email' | t }}</label>
         </div>
         {%- if form.errors -%}
@@ -245,7 +252,7 @@
             {{ form.errors.messages['form'] }}
           </small>
         {%- endif -%}
-        <button>{{ 'customer.login_page.submit' | t }}</button>
+        <button>{{ 'customer.recover_password.submit' | t }}</button>
       {%- endform -%}
       <div class="login__cancel-recover">
         <a href="#" id="HideRecoverPasswordLink">{{ 'customer.login_page.cancel' | t }}</a>
