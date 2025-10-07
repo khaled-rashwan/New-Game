@@ -1,0 +1,142 @@
+/* RTL (Right-to-Left) Styles */
+/* This file contains style overrides for RTL languages (Arabic, Hebrew, Persian, Urdu) */
+
+/* Flip text alignment */
+[dir="rtl"] .left {
+  text-align: right;
+}
+
+[dir="rtl"] .right {
+  text-align: left;
+}
+
+/* Flip margins and paddings using logical properties fallback */
+[dir="rtl"] .margin-left {
+  margin-right: inherit;
+  margin-left: 0;
+}
+
+[dir="rtl"] .margin-right {
+  margin-left: inherit;
+  margin-right: 0;
+}
+
+[dir="rtl"] .padding-left {
+  padding-right: inherit;
+  padding-left: 0;
+}
+
+[dir="rtl"] .padding-right {
+  padding-left: inherit;
+  padding-right: 0;
+}
+
+/* Flip floats */
+[dir="rtl"] .float-left {
+  float: right;
+}
+
+[dir="rtl"] .float-right {
+  float: left;
+}
+
+/* Icons and arrows that need flipping */
+[dir="rtl"] .icon-arrow,
+[dir="rtl"] .animate-arrow {
+  transform: scaleX(-1);
+}
+
+/* Flip flex direction for row-reverse elements */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+/* Transform adjustments for RTL */
+[dir="rtl"] .transform-rotate {
+  transform: scaleX(-1);
+}
+
+/* Ensure proper text direction for inputs and textareas */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Menu and navigation items */
+[dir="rtl"] .menu-drawer,
+[dir="rtl"] .list-menu {
+  text-align: right;
+}
+
+/* Product cards and lists */
+[dir="rtl"] .card__text,
+[dir="rtl"] .card__information {
+  text-align: right;
+}
+
+/* Breadcrumbs separator */
+[dir="rtl"] .breadcrumb::after {
+  transform: scaleX(-1);
+}
+
+/* Modal and drawer positioning */
+[dir="rtl"] .drawer {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .drawer--is-open {
+  transform: translateX(100%);
+}
+
+[dir="rtl"] .drawer--is-open.drawer--from-left {
+  transform: translateX(-100%);
+}
+
+/* Slider and carousel arrows */
+[dir="rtl"] .slider-button--prev {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .slider-button--next {
+  left: auto;
+  right: 0;
+}
+
+/* Pagination */
+[dir="rtl"] .pagination__item {
+  direction: rtl;
+}
+
+/* Cart and checkout */
+[dir="rtl"] .cart-item,
+[dir="rtl"] .cart-item__details {
+  text-align: right;
+}
+
+/* Search and filters */
+[dir="rtl"] .search,
+[dir="rtl"] .facets {
+  text-align: right;
+}
+
+/* Tooltips and popovers */
+[dir="rtl"] .tooltip {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix for media queries and responsive elements */
+[dir="rtl"] .media-wrapper,
+[dir="rtl"] .media {
+  direction: ltr;
+}
+
+[dir="rtl"] .media-wrapper__caption,
+[dir="rtl"] .media__caption {
+  direction: rtl;
+  text-align: right;
+}
