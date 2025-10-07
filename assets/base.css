@@ -2309,9 +2309,16 @@ input[type='checkbox'] {
 @media screen and (max-width: 989px) {
   .header--enhanced {
     grid-template-areas: 
-      'left-icon heading icons'
+      'heading left-icon icons'
       'mobile-bottom mobile-bottom mobile-bottom';
+    grid-template-columns: auto auto 1fr;
     grid-template-rows: auto auto;
+  }
+
+  .header--enhanced .header__heading,
+  .header--enhanced .header__heading-link {
+    justify-self: start;
+    text-align: left;
   }
 
   .header__mobile-bottom {
