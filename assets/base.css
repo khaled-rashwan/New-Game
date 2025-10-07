@@ -2309,9 +2309,9 @@ input[type='checkbox'] {
 @media screen and (max-width: 989px) {
   .header--enhanced {
     grid-template-areas: 
-      'heading left-icon icons'
+      'heading icons left-icon'
       'mobile-bottom mobile-bottom mobile-bottom';
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto;
   }
 
