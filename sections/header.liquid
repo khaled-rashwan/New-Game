@@ -931,25 +931,24 @@
         </details-modal>
       {%- endif -%}
 
-      {%- comment -%} Wishlist & Cart Icons {%- endcomment -%}
-      <div class="header__action-icons">
-        {%- comment -%} Wishlist Icon {%- endcomment -%}
-        <a href="/pages/wishlist" class="header__icon-link header__icon-link--wishlist" aria-label="Wishlist">
-          {% render 'icon-heart' %}
-        </a>
-
-        {%- comment -%} Cart Icon with Badge {%- endcomment -%}
-        <a href="{{ routes.cart_url }}" class="header__icon-link header__icon-link--cart" aria-label="Cart">
-          {% render 'icon-cart' %}
-          {%- if cart.item_count > 0 -%}
-            <span class="header__cart-badge">{{ cart.item_count }}</span>
-          {%- endif -%}
-        </a>
-      </div>
-
       {%- comment -%} Login Button or User Dropdown {%- endcomment -%}
       {%- if customer -%}
-        {%- comment -%} Logged-in: User Dropdown {%- endcomment -%}
+        {%- comment -%} Logged-in: Wishlist & Cart Icons + User Dropdown {%- endcomment -%}
+        <div class="header__action-icons">
+          {%- comment -%} Wishlist Icon {%- endcomment -%}
+          <a href="/pages/wishlist" class="header__icon-link header__icon-link--wishlist" aria-label="Wishlist">
+            {% render 'icon-heart' %}
+          </a>
+
+          {%- comment -%} Cart Icon with Badge {%- endcomment -%}
+          <a href="{{ routes.cart_url }}" class="header__icon-link header__icon-link--cart" aria-label="Cart">
+            {% render 'icon-cart' %}
+            {%- if cart.item_count > 0 -%}
+              <span class="header__cart-badge">{{ cart.item_count }}</span>
+            {%- endif -%}
+          </a>
+        </div>
+
         <div class="header__user-dropdown">
           <button type="button" class="header__user-toggle" aria-label="User menu" onclick="this.parentElement.classList.toggle('active')">
             <span class="header__user-avatar">{{ customer.first_name | slice: 0 | upcase }}</span>
@@ -965,7 +964,7 @@
           </div>
         </div>
       {%- else -%}
-        {%- comment -%} Not logged in: Login Button {%- endcomment -%}
+        {%- comment -%} Not logged in: Login Button only {%- endcomment -%}
         {%- if section.settings.login_button_text != blank -%}
           <a href="{% if section.settings.login_button_url != blank %}{{ section.settings.login_button_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__login-button">
             {{ section.settings.login_button_text }}
@@ -999,21 +998,21 @@
           </form>
         </div>
         
-        {%- comment -%} Mobile: Wishlist & Cart Icons {%- endcomment -%}
-        <div class="header__action-icons">
-          <a href="/pages/wishlist" class="header__icon-link header__icon-link--wishlist" aria-label="Wishlist">
-            {% render 'icon-heart' %}
-          </a>
-          <a href="{{ routes.cart_url }}" class="header__icon-link header__icon-link--cart" aria-label="Cart">
-            {% render 'icon-cart' %}
-            {%- if cart.item_count > 0 -%}
-              <span class="header__cart-badge">{{ cart.item_count }}</span>
-            {%- endif -%}
-          </a>
-        </div>
-
         {%- comment -%} Mobile: Login Button or User Dropdown {%- endcomment -%}
         {%- if customer -%}
+          {%- comment -%} Mobile: Wishlist & Cart Icons (logged in only) {%- endcomment -%}
+          <div class="header__action-icons">
+            <a href="/pages/wishlist" class="header__icon-link header__icon-link--wishlist" aria-label="Wishlist">
+              {% render 'icon-heart' %}
+            </a>
+            <a href="{{ routes.cart_url }}" class="header__icon-link header__icon-link--cart" aria-label="Cart">
+              {% render 'icon-cart' %}
+              {%- if cart.item_count > 0 -%}
+                <span class="header__cart-badge">{{ cart.item_count }}</span>
+              {%- endif -%}
+            </a>
+          </div>
+
           <div class="header__user-dropdown">
             <button type="button" class="header__user-toggle" aria-label="User menu" onclick="this.parentElement.classList.toggle('active')">
               <span class="header__user-avatar">{{ customer.first_name | slice: 0 | upcase }}</span>
