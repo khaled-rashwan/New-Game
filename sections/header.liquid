@@ -73,6 +73,43 @@
     padding-bottom: 1rem;
     padding-top: 1rem;
     line-height: calc(1 + 0.8 / var(--font-body-scale));
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  /* Navigation hover effect with bottom border animation */
+  .header__menu-item {
+    position: relative;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding: 2.4rem 1.6rem;
+    margin: 0 0.4rem; /* 24-32px spacing between items */
+    transition: color 0.2s ease;
+  }
+
+  .header__menu-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0.2rem;
+    background-color: #FF6600;
+    transition: width 0.3s ease;
+  }
+
+  .header__menu-item:hover {
+    color: #FF6600;
+  }
+
+  .header__menu-item:hover::after {
+    width: 80%;
+  }
+
+  /* List menu items spacing */
+  .list-menu--inline .list-menu__item {
+    margin: 0 1.2rem; /* 24px spacing */
   }
 
   @media screen and (min-width: 750px) {
@@ -86,7 +123,7 @@
   .header__inline-search {
     position: relative;
     flex-grow: 1;
-    max-width: 40rem;
+    max-width: 28rem; /* 280px specification */
   }
 
   .header__inline-search .search {
@@ -98,26 +135,41 @@
   }
 
   .header__inline-search .field__input {
-    padding: 1rem 4rem 1rem 1.5rem;
-    border-radius: 0.5rem;
-    border: 0.1rem solid rgba(var(--color-foreground), 0.15);
-    background-color: rgba(var(--color-foreground), 0.05);
+    padding: 1rem 4rem 1rem 4rem; /* Space for icon on left */
+    border-radius: 0.6rem;
+    border: 0.1rem solid #E5E5E5; /* Specification color */
+    background-color: #ffffff;
     font-size: 1.4rem;
+    height: 4rem; /* 40px specification */
+    transition: border-color 0.2s ease;
   }
 
   .header__inline-search .field__input:focus {
-    border-color: rgba(var(--color-foreground), 0.3);
-    background-color: rgb(var(--color-background));
+    border-color: #FF6600; /* Specification color on focus */
+    background-color: #ffffff;
+    outline: none;
+  }
+
+  .header__inline-search .field__input::placeholder {
+    color: rgba(26, 26, 26, 0.5);
   }
 
   .header__inline-search .search__button {
     position: absolute;
-    right: 0.5rem;
+    left: 1rem; /* Icon on left side per specification */
     top: 50%;
     transform: translateY(-50%);
     padding: 0.5rem;
     background: transparent;
     border: none;
+    cursor: pointer;
+    color: rgba(26, 26, 26, 0.5);
+  }
+
+  .header__inline-search .search__button .icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
   }
 
   .header__login-button {
