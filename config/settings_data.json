@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "accent_icons": "outline-button",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -33,7 +34,7 @@
         "type": "header",
         "settings": {
           "color_scheme": "background-1",
-          "logo": "shopify://shop_images/logo.png",
+          "logo": "shopify://shop_images/73542b279f7f4ac3f8146ed85870df7735521010.png",
           "logo_width": 70,
           "logo_position": "middle-left",
           "menu": "main-menu",
@@ -46,7 +47,26 @@
           "mobile_logo_position": "center",
           "margin_bottom": 0,
           "padding_top": 0,
-          "padding_bottom": 0
+          "padding_bottom": 0,
+          "login_button_bg_color": "#000000",
+          "login_button_text_color": "#ffffff",
+          "login_button_hover_bg_color": "#ff6600",
+          "login_button_border_radius": 6,
+          "login_button_padding_top_bottom": 8,
+          "login_button_padding_left_right": 18,
+          "login_button_margin_left": 15,
+          "login_button_border_width": "1px",
+          "login_button_border_color": "#1a1a1a",
+          "user_dropdown_bg_color": "#ffffff",
+          "user_dropdown_text_color": "#1a1a1a",
+          "user_dropdown_border_color": "#1a1a1a26",
+          "user_dropdown_hover_color": "#ff6600",
+          "user_dropdown_border_radius": 5,
+          "icon_color": "#1a1a1a",
+          "icon_hover_color": "#ff6600",
+          "cart_badge_bg_color": "#e74c3c",
+          "cart_badge_text_color": "#ffffff",
+          "icon_size": 22
         }
       },
       "footer": {

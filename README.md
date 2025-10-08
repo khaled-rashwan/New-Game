@@ -1,5 +1,23 @@
 # Dawn
 
+## 🎮 NewGame Theme Customizations
+
+This theme is based on Shopify's Dawn theme with custom enhancements for the NewGame gaming store.
+
+### Recent Updates
+
+#### Header Design Enhancement (Latest)
+- ✨ **Wishlist Icon** - Heart outline icon with hover effects
+- 🛒 **Cart with Badge** - Shopping cart icon with item count badge
+- 👤 **User Dropdown Menu** - Avatar with first letter, dropdown with account links
+- 🔍 **Enhanced Search Bar** - 280px search bar with left-aligned icon
+- 🎨 **Navigation Hover Effects** - Bottom border animation with brand colors
+- 📱 **Responsive Design** - Optimized for mobile and desktop
+
+See [HEADER_LOGGED_IN_IMPLEMENTATION.md](./HEADER_LOGGED_IN_IMPLEMENTATION.md) for complete documentation.
+
+---
+
 [![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)
 
