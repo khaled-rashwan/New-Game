@@ -343,19 +343,7 @@
         "padding_bottom": 36
       }
     },
-    "video_section": {
-      "type": "video",
-      "settings": {
-        "heading": "Experience Gaming Like Never Before",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
+
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -396,45 +384,6 @@
         "padding_bottom": 52
       }
     },
-    "email_signup": {
-      "type": "email-signup-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Join the Gaming Community",
-            "heading_size": "h1"
-          }
-        },
-        "paragraph": {
-          "type": "paragraph",
-          "settings": {
-            "paragraph_text": "<p>Subscribe to get exclusive deals, early access to new releases, and gaming tips delivered straight to your inbox.</p>"
-          }
-        },
-        "email_form": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "paragraph",
-        "email_form"
-      ],
-      "settings": {
-        "show_background_image": true,
-        "image_overlay_opacity": 40,
-        "image_height": "medium",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "accent-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    }
   },
   "order": [
     "hero_banner",
@@ -445,8 +394,6 @@
     "image_with_text_2",
     "why_choose_us",
     "brands_showcase",
-    "video_section",
-    "rich_text",
-    "email_signup"
+    "rich_text"
   ]
 }
