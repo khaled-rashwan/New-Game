@@ -248,8 +248,8 @@
         "column1": {
           "type": "column",
           "settings": {
-            "title": "Fast Shipping",
-            "text": "<p>Get your games and gear delivered quickly with our express shipping options. Most orders ship within 24 hours.</p>",
+            "title": "Secure Shopping",
+            "text": "<p>SSL Protected</p>",
             "link_label": "",
             "link": ""
           }
@@ -257,8 +257,8 @@
         "column2": {
           "type": "column",
           "settings": {
-            "title": "Secure Payment",
-            "text": "<p>Shop with confidence using our secure payment gateway. We accept all major credit cards and digital wallets.</p>",
+            "title": "Free Shipping",
+            "text": "<p>Orders over $75</p>",
             "link_label": "",
             "link": ""
           }
@@ -266,8 +266,8 @@
         "column3": {
           "type": "column",
           "settings": {
-            "title": "Expert Support",
-            "text": "<p>Our gaming experts are here to help you find the perfect products and answer any questions you may have.</p>",
+            "title": "Easy Returns",
+            "text": "<p>30-day policy</p>",
             "link_label": "",
             "link": ""
           }
@@ -275,8 +275,8 @@
         "column4": {
           "type": "column",
           "settings": {
-            "title": "Best Prices",
-            "text": "<p>We guarantee competitive prices on all products. Find a lower price elsewhere? We'll match it!</p>",
+            "title": "5-Star Reviews",
+            "text": "<p>1000+ happy customers</p>",
             "link_label": "",
             "link": ""
           }
@@ -289,10 +289,10 @@
         "column4"
       ],
       "settings": {
-        "title": "Why Choose Us",
+        "title": "",
         "heading_size": "h1",
         "image_width": "third",
-        "image_ratio": "adapt",
+        "image_ratio": "circle",
         "columns_desktop": 4,
         "column_alignment": "center",
         "background_style": "none",
@@ -300,7 +300,7 @@
         "button_link": "",
         "swipe_on_mobile": false,
         "color_scheme": "background-1",
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
       }
