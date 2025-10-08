@@ -1,0 +1,44 @@
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-banner__content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-banner__heading {
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+}
+
+.cta-banner__text {
+  line-height: 1.6;
+  margin: 0 auto 30px auto;
+  max-width: 700px;
+}
+
+.cta-banner__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-banner__button {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.cta-banner__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

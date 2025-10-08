@@ -1,0 +1,369 @@
+{{ 'section-services-grid.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .services-grid-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .services-grid-{{ section.id }} .services-grid__heading {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .services-grid-{{ section.id }} .services-grid__heading {
+      font-size: {{ section.settings.heading_size_desktop }}px;
+    }
+  }
+
+  .services-grid-{{ section.id }} .services-grid__description {
+    color: {{ section.settings.description_color }};
+    font-size: {{ section.settings.description_size }}px;
+  }
+
+  .services-grid-{{ section.id }} .service-card {
+    background-color: {{ section.settings.card_background_color }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+  }
+
+  .services-grid-{{ section.id }} .service-card__icon {
+    color: {{ section.settings.icon_color }};
+    font-size: {{ section.settings.icon_size }}px;
+  }
+
+  .services-grid-{{ section.id }} .service-card__title {
+    color: {{ section.settings.card_title_color }};
+    font-size: {{ section.settings.card_title_size }}px;
+  }
+
+  .services-grid-{{ section.id }} .service-card__text {
+    color: {{ section.settings.card_text_color }};
+    font-size: {{ section.settings.card_text_size }}px;
+  }
+
+  .services-grid-{{ section.id }} .service-card__button {
+    color: {{ section.settings.button_text_color }};
+    font-size: {{ section.settings.button_text_size }}px;
+  }
+{%- endstyle -%}
+
+<section class="services-grid services-grid-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="services-grid__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+    
+    {%- if section.settings.description != blank -%}
+      <p class="services-grid__description">
+        {{ section.settings.description }}
+      </p>
+    {%- endif -%}
+    
+    <div class="services-grid__cards">
+      {%- for block in section.blocks -%}
+        <div class="service-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="service-card__icon">
+              {{ block.settings.icon }}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+            <h3 class="service-card__title">
+              {{ block.settings.title }}
+            </h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="service-card__text">
+              {{ block.settings.text }}
+            </p>
+          {%- endif -%}
+          {%- if block.settings.button_label != blank -%}
+            <a href="{{ block.settings.button_link }}" class="service-card__button">
+              {{ block.settings.button_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Services Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "More Than Just Games"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From custom game design to unforgettable events, we offer comprehensive gaming services."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 28,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon Size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Title Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Text Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Text Size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Card Styling"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (SVG or Unicode)",
+          "default": "🎲"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Custom Game Design"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Bring your game ideas to life with our professional design services."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services Grid",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "icon": "🎨",
+            "title": "Custom Game Design",
+            "text": "Bring your game ideas to life with our professional design services."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "🎉",
+            "title": "Private Events",
+            "text": "Host exclusive gaming sessions with expert game masters."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "🏆",
+            "title": "Team Building",
+            "text": "Strengthen bonds through strategic board game challenges."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "📦",
+            "title": "Game Rental",
+            "text": "Rent premium games for your events and parties."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

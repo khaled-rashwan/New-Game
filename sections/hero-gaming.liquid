@@ -1,0 +1,360 @@
+{{ 'section-hero-gaming.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .hero-gaming-{{ section.id }} {
+    background: {{ section.settings.gradient_start }};
+    background: linear-gradient(135deg, {{ section.settings.gradient_start }} 0%, {{ section.settings.gradient_end }} 100%);
+  }
+
+  .hero-gaming-{{ section.id }} .hero-gaming__heading {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size_mobile }}px;
+    margin-bottom: {{ section.settings.heading_spacing }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .hero-gaming-{{ section.id }} .hero-gaming__heading {
+      font-size: {{ section.settings.heading_size_desktop }}px;
+    }
+  }
+
+  .hero-gaming-{{ section.id }} .hero-gaming__subheading {
+    color: {{ section.settings.subheading_color }};
+    font-size: {{ section.settings.subheading_size_mobile }}px;
+    margin-bottom: {{ section.settings.subheading_spacing }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .hero-gaming-{{ section.id }} .hero-gaming__subheading {
+      font-size: {{ section.settings.subheading_size_desktop }}px;
+    }
+  }
+
+  .hero-gaming-{{ section.id }} .hero-gaming__text {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size_mobile }}px;
+    margin-bottom: {{ section.settings.text_spacing }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .hero-gaming-{{ section.id }} .hero-gaming__text {
+      font-size: {{ section.settings.text_size_desktop }}px;
+    }
+  }
+
+  .hero-gaming-{{ section.id }} .hero-gaming__button {
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    padding: {{ section.settings.button_padding_vertical }}px {{ section.settings.button_padding_horizontal }}px;
+    font-size: {{ section.settings.button_text_size }}px;
+    border-radius: {{ section.settings.button_radius }}px;
+  }
+
+  .hero-gaming-{{ section.id }} .hero-gaming__button:hover {
+    background-color: {{ section.settings.button_hover_bg_color }};
+  }
+{%- endstyle -%}
+
+<section class="hero-gaming hero-gaming-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="hero-gaming__content">
+      {%- if section.settings.heading != blank -%}
+        <h1 class="hero-gaming__heading">
+          {{ section.settings.heading }}
+        </h1>
+      {%- endif -%}
+      
+      {%- if section.settings.subheading != blank -%}
+        <h2 class="hero-gaming__subheading">
+          {{ section.settings.subheading }}
+        </h2>
+      {%- endif -%}
+      
+      {%- if section.settings.text != blank -%}
+        <p class="hero-gaming__text">
+          {{ section.settings.text }}
+        </p>
+      {%- endif -%}
+      
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="hero-gaming__button button">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Gaming Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover Your Next"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Gaming Adventure"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "From strategy masterpieces to family favorites, find the perfect board games for every occasion. Join thousands of happy gamers worldwide."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Games"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "gradient_start",
+      "label": "Gradient Start Color",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "color",
+      "id": "gradient_end",
+      "label": "Gradient End Color",
+      "default": "#FF8C42"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#FFD93D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Button Hover Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 30,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Desktop)",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "subheading_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Subheading Size (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subheading_size_desktop",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Subheading Size (Desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Desktop)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Text Size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Bottom Spacing",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subheading_spacing",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Subheading Bottom Spacing",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_spacing",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Text Bottom Spacing",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Vertical Padding",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Horizontal Padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Gaming Banner"
+    }
+  ]
+}
+{% endschema %}

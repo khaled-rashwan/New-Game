@@ -1,0 +1,361 @@
+{{ 'section-cta-banner.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .cta-banner-{{ section.id }} {
+    background: {{ section.settings.gradient_start }};
+    background: linear-gradient(135deg, {{ section.settings.gradient_start }} 0%, {{ section.settings.gradient_end }} 100%);
+  }
+
+  .cta-banner-{{ section.id }} .cta-banner__heading {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .cta-banner-{{ section.id }} .cta-banner__heading {
+      font-size: {{ section.settings.heading_size_desktop }}px;
+    }
+  }
+
+  .cta-banner-{{ section.id }} .cta-banner__text {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .cta-banner-{{ section.id }} .cta-banner__text {
+      font-size: {{ section.settings.text_size_desktop }}px;
+    }
+  }
+
+  .cta-banner-{{ section.id }} .cta-banner__button {
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    padding: {{ section.settings.button_padding_vertical }}px {{ section.settings.button_padding_horizontal }}px;
+    font-size: {{ section.settings.button_text_size }}px;
+    border-radius: {{ section.settings.button_radius }}px;
+    border: {{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }};
+  }
+
+  .cta-banner-{{ section.id }} .cta-banner__button:hover {
+    background-color: {{ section.settings.button_hover_bg_color }};
+    color: {{ section.settings.button_hover_text_color }};
+  }
+
+  .cta-banner-{{ section.id }} .cta-banner__button--secondary {
+    background-color: {{ section.settings.button_secondary_bg_color }};
+    color: {{ section.settings.button_secondary_text_color }};
+    border: {{ section.settings.button_border_width }}px solid {{ section.settings.button_secondary_border_color }};
+  }
+
+  .cta-banner-{{ section.id }} .cta-banner__button--secondary:hover {
+    background-color: {{ section.settings.button_secondary_hover_bg_color }};
+    color: {{ section.settings.button_secondary_hover_text_color }};
+  }
+{%- endstyle -%}
+
+<section class="cta-banner cta-banner-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="cta-banner__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="cta-banner__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+      
+      {%- if section.settings.text != blank -%}
+        <p class="cta-banner__text">
+          {{ section.settings.text }}
+        </p>
+      {%- endif -%}
+      
+      <div class="cta-banner__buttons">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="cta-banner__button button">
+            {{ section.settings.button_label }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 }}" class="cta-banner__button cta-banner__button--secondary button">
+            {{ section.settings.button_label_2 }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Start Your Gaming Journey?"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Discover amazing games, join our community events, and create unforgettable memories with friends and family."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Start Shopping"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Second Button Label",
+      "default": "Join an Event"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Second Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "gradient_start",
+      "label": "Gradient Start Color",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "color",
+      "id": "gradient_end",
+      "label": "Gradient End Color",
+      "default": "#FF8C42"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Primary Button Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Primary Button Hover Background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Primary Button Text",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Primary Button Hover Text",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Primary Button Border",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_bg_color",
+      "label": "Secondary Button Background",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_hover_bg_color",
+      "label": "Secondary Button Hover Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_text_color",
+      "label": "Secondary Button Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_hover_text_color",
+      "label": "Secondary Button Hover Text",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_border_color",
+      "label": "Secondary Button Border",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Desktop)",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Desktop)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Text Size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Button Styling"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Vertical Padding",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Horizontal Padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Width",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Banner"
+    }
+  ]
+}
+{% endschema %}

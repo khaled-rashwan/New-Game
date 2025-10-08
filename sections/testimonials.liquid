@@ -1,0 +1,355 @@
+{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .testimonials-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .testimonials-{{ section.id }} .testimonials__heading {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .testimonials-{{ section.id }} .testimonials__heading {
+      font-size: {{ section.settings.heading_size_desktop }}px;
+    }
+  }
+
+  .testimonials-{{ section.id }} .testimonials__subheading {
+    color: {{ section.settings.subheading_color }};
+    font-size: {{ section.settings.subheading_size }}px;
+  }
+
+  .testimonials-{{ section.id }} .testimonial-card {
+    background-color: {{ section.settings.card_background_color }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+  }
+
+  .testimonials-{{ section.id }} .testimonial-card__stars {
+    color: {{ section.settings.stars_color }};
+  }
+
+  .testimonials-{{ section.id }} .testimonial-card__text {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size }}px;
+  }
+
+  .testimonials-{{ section.id }} .testimonial-card__author {
+    color: {{ section.settings.author_color }};
+    font-size: {{ section.settings.author_size }}px;
+  }
+
+  .testimonials-{{ section.id }} .testimonial-card__location {
+    color: {{ section.settings.location_color }};
+    font-size: {{ section.settings.location_size }}px;
+  }
+{%- endstyle -%}
+
+<section class="testimonials testimonials-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="testimonials__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+    
+    {%- if section.settings.subheading != blank -%}
+      <p class="testimonials__subheading">
+        {{ section.settings.subheading }}
+      </p>
+    {%- endif -%}
+    
+    <div class="testimonials__grid">
+      {%- for block in section.blocks -%}
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.rating > 0 -%}
+            <div class="testimonial-card__stars">
+              {%- for i in (1..block.settings.rating) -%}
+                ⭐
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="testimonial-card__text">
+              "{{ block.settings.text }}"
+            </p>
+          {%- endif -%}
+          <div class="testimonial-card__author-info">
+            {%- if block.settings.author != blank -%}
+              <p class="testimonial-card__author">
+                {{ block.settings.author }}
+              </p>
+            {%- endif -%}
+            {%- if block.settings.location != blank -%}
+              <p class="testimonial-card__location">
+                {{ block.settings.location }}
+              </p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Join thousands of satisfied gamers worldwide"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background Color",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "color",
+      "id": "stars_color",
+      "label": "Stars Color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "author_color",
+      "label": "Author Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "location_color",
+      "label": "Location Color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 28,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "author_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Author Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "location_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Location Size",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Card Styling"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Rating (Stars)",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Testimonial Text",
+          "default": "Amazing selection and fast shipping! Found games I couldn't get anywhere else."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Sarah Johnson"
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "California"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "Amazing selection and fast shipping! Found games I couldn't get anywhere else.",
+            "author": "Sarah Johnson",
+            "location": "California"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "The custom game design service exceeded our expectations. Highly recommended!",
+            "author": "Mike Chen",
+            "location": "New York"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "Great customer service and the events are so fun. Our family loves coming here!",
+            "author": "Emily Rodriguez",
+            "location": "Texas"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

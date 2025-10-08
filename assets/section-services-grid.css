@@ -1,0 +1,76 @@
+.services-grid {
+  text-align: center;
+}
+
+.services-grid__heading {
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.services-grid__description {
+  margin: 0 auto 40px auto;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.services-grid__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 750px) {
+  .services-grid__cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .services-grid__cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.service-card {
+  padding: 30px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card__icon {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-card__title {
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.service-card__text {
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.service-card__button {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.service-card__button:hover {
+  opacity: 0.7;
+}
