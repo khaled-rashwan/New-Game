@@ -403,6 +403,71 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "trust_badges_tYxNxb": {
+      "type": "trust-badges",
+      "blocks": {
+        "badge_d8Fx4W": {
+          "type": "badge",
+          "settings": {
+            "custom_icon": "shopify://shop_images/SVG_66.svg",
+            "icon": "shield",
+            "icon_color": "#10b981",
+            "title": "Secure Shopping",
+            "subtitle": "SSL Protected"
+          }
+        },
+        "badge_CFbkUL": {
+          "type": "badge",
+          "settings": {
+            "custom_icon": "shopify://shop_images/SVG_67.svg",
+            "icon": "truck",
+            "icon_color": "#3b82f6",
+            "title": "Free Shipping",
+            "subtitle": "Orders over $75"
+          }
+        },
+        "badge_XezgJ3": {
+          "type": "badge",
+          "settings": {
+            "custom_icon": "shopify://shop_images/SVG_68.svg",
+            "icon": "refresh",
+            "icon_color": "#8b5cf6",
+            "title": "Easy Returns",
+            "subtitle": "30-day policy"
+          }
+        },
+        "badge_FAGrc9": {
+          "type": "badge",
+          "settings": {
+            "custom_icon": "shopify://shop_images/SVG_69.svg",
+            "icon": "star",
+            "icon_color": "#f59e0b",
+            "title": "5-Star Reviews",
+            "subtitle": "1000+ happy customers"
+          }
+        }
+      },
+      "block_order": [
+        "badge_d8Fx4W",
+        "badge_CFbkUL",
+        "badge_XezgJ3",
+        "badge_FAGrc9"
+      ],
+      "name": "Trust Badges",
+      "settings": {
+        "background_color": "#f9f9f9",
+        "container_width": 1200,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "spacing": 40,
+        "icon_size": 40,
+        "title_size": 16,
+        "title_weight": "600",
+        "title_color": "#000000",
+        "subtitle_size": 13,
+        "subtitle_color": "#666666"
+      }
     }
   },
   "order": [
@@ -414,6 +479,7 @@
     "image_with_text_2",
     "why_choose_us",
     "brands_showcase",
-    "rich_text"
+    "rich_text",
+    "trust_badges_tYxNxb"
   ]
 }
