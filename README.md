@@ -98,6 +98,19 @@ We love fast websites! Which is why we created [Shopify/lighthouse-ci-action](ht
 
 Dawn runs [Theme Check](#Theme-Check) on every commit via [Shopify/theme-check-action](https://github.com/Shopify/theme-check-action).
 
+#### Claude Code Integration
+
+This repository is configured with Claude Code via GitHub Actions. You can get AI-powered coding assistance by mentioning `@claude` in issues, pull requests, or comments.
+
+**Setup**: See [CLAUDE_CODE_SETUP.md](CLAUDE_CODE_SETUP.md) for complete setup instructions.
+
+**Usage**:
+- Assign issues to Claude: `@claude Please implement feature X`
+- Request code reviews: `@claude Please review this PR`
+- Get debugging help: `@claude Help fix this bug`
+
+The workflow runs automatically when you mention Claude in issues or PRs.
+
 ## Contributing
 
 Want to make commerce better for everyone by contributing to Dawn? We'd love your help! Please read our [contributing guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md) to learn about our development process, how to propose bug fixes and improvements, and how to build for Dawn.
