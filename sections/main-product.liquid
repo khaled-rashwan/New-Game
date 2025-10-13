@@ -564,7 +564,7 @@
       
       <div class="main-image">
         {% if product.featured_image %}
-          <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" id="mainImage">
+          <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" id="mainImage" width="800" height="800" loading="eager">
         {% else %}
           <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
             <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -577,7 +577,7 @@
       <div class="thumbnail-container">
         {% for image in product.images limit: 4 %}
           <div class="thumbnail {% if forloop.first %}active{% endif %}" onclick="changeImage('{{ image | img_url: '800x' }}', this)">
-            <img src="{{ image | img_url: '200x' }}" alt="{{ product.title }}">
+            <img src="{{ image | img_url: '200x' }}" alt="{{ product.title }}" width="200" height="200" loading="lazy">
           </div>
         {% endfor %}
       </div>
@@ -724,7 +724,7 @@
         <div class="product-card">
           <div class="product-card-image">
             {% if product.featured_image %}
-              <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+              <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" width="400" height="400" loading="lazy">
             {% endif %}
             <button class="wishlist-btn">♡</button>
           </div>
