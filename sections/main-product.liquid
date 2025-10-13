@@ -1,5 +1,18 @@
 {% comment %}
   Product Page Template - Gaming Store Style
+  
+  METAFIELDS SETUP REQUIRED:
+  Go to Settings > Custom Data > Products and add these metafields:
+  
+  1. players (Single line text) - e.g., "3-4"
+  2. play_time (Single line text) - e.g., "60-90 min"
+  3. complexity (Single line text) - e.g., "Medium"
+  4. players_icon (File) - Upload player count icon
+  5. time_icon (File) - Upload time icon
+  6. complexity_icon (File) - Upload complexity icon
+  7. rating_score (Number - Decimal) - e.g., 4.8
+  8. review_count (Number - Integer) - e.g., 1247
+  9. feature_1 to feature_6 (Single line text) - Key features
 {% endcomment %}
 
 <style>
@@ -178,6 +191,12 @@
     justify-content: center;
     color: #ff6b00;
     font-size: 24px;
+  }
+
+  .spec-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
   }
 
   .spec-value {
@@ -597,27 +616,58 @@
       <h1 class="product-title">{{ product.title }}</h1>
 
       <div class="product-rating">
+        {% assign rating = product.metafields.custom.rating_score | default: 4.8 %}
+        {% assign full_stars = rating | floor %}
+        {% assign has_half = rating | modulo: 1 %}
+        {% assign next_star = full_stars | plus: 1 %}
+        
         <div class="stars">
-          ★★★★<span style="color: #ddd;">★</span>
+          {% for i in (1..5) %}
+            {% if i <= full_stars %}
+              ★
+            {% elsif i == next_star and has_half >= 0.5 %}
+              ★
+            {% else %}
+              <span style="color: #ddd;">★</span>
+            {% endif %}
+          {% endfor %}
         </div>
-        <span class="rating-score">4.8</span>
-        <span class="review-count">(1247 reviews)</span>
+        <span class="rating-score">{{ rating }}</span>
+        <span class="review-count">({{ product.metafields.custom.review_count | default: 1247 }} reviews)</span>
       </div>
 
       <div class="product-specs">
         <div class="spec-item">
-          <div class="spec-icon">👥</div>
-          <div class="spec-value">3-4</div>
+          <div class="spec-icon">
+            {% if product.metafields.custom.players_icon %}
+              <img src="{{ product.metafields.custom.players_icon | img_url: '80x' }}" alt="Players" width="40" height="40" loading="lazy">
+            {% else %}
+              👥
+            {% endif %}
+          </div>
+          <div class="spec-value">{{ product.metafields.custom.players | default: "3-4" }}</div>
           <div class="spec-label">Players</div>
         </div>
         <div class="spec-item">
-          <div class="spec-icon">⏱️</div>
-          <div class="spec-value">60-90 min</div>
+          <div class="spec-icon">
+            {% if product.metafields.custom.time_icon %}
+              <img src="{{ product.metafields.custom.time_icon | img_url: '80x' }}" alt="Play Time" width="40" height="40" loading="lazy">
+            {% else %}
+              ⏱️
+            {% endif %}
+          </div>
+          <div class="spec-value">{{ product.metafields.custom.play_time | default: "60-90 min" }}</div>
           <div class="spec-label">Play Time</div>
         </div>
         <div class="spec-item">
-          <div class="spec-icon">🎯</div>
-          <div class="spec-value">Medium</div>
+          <div class="spec-icon">
+            {% if product.metafields.custom.complexity_icon %}
+              <img src="{{ product.metafields.custom.complexity_icon | img_url: '80x' }}" alt="Complexity" width="40" height="40" loading="lazy">
+            {% else %}
+              🎯
+            {% endif %}
+          </div>
+          <div class="spec-value">{{ product.metafields.custom.complexity | default: "Medium" }}</div>
           <div class="spec-label">Complexity</div>
         </div>
       </div>
@@ -680,7 +730,7 @@
       <button class="tab-button active" onclick="switchTab(0)">Description</button>
       <button class="tab-button" onclick="switchTab(1)">Specifications</button>
       <button class="tab-button" onclick="switchTab(2)">Components</button>
-      <button class="tab-button" onclick="switchTab(3)">Reviews (1247)</button>
+      <button class="tab-button" onclick="switchTab(3)">Reviews ({{ product.metafields.custom.review_count | default: 1247 }})</button>
     </div>
 
     <div class="tab-content active">
@@ -691,12 +741,41 @@
         <div class="key-features">
           <h3>Key Features</h3>
           <div class="features-grid">
-            <div class="feature-item">Award-winning gameplay</div>
-            <div class="feature-item">Perfect for family game nights</div>
-            <div class="feature-item">High replay value</div>
-            <div class="feature-item">Easy to learn, hard to master</div>
-            <div class="feature-item">Encourages social interaction</div>
-            <div class="feature-item">Multiple expansion packs available</div>
+            {% if product.metafields.custom.feature_1 %}
+              <div class="feature-item">{{ product.metafields.custom.feature_1 }}</div>
+            {% else %}
+              <div class="feature-item">Award-winning gameplay</div>
+            {% endif %}
+            
+            {% if product.metafields.custom.feature_2 %}
+              <div class="feature-item">{{ product.metafields.custom.feature_2 }}</div>
+            {% else %}
+              <div class="feature-item">Perfect for family game nights</div>
+            {% endif %}
+            
+            {% if product.metafields.custom.feature_3 %}
+              <div class="feature-item">{{ product.metafields.custom.feature_3 }}</div>
+            {% else %}
+              <div class="feature-item">High replay value</div>
+            {% endif %}
+            
+            {% if product.metafields.custom.feature_4 %}
+              <div class="feature-item">{{ product.metafields.custom.feature_4 }}</div>
+            {% else %}
+              <div class="feature-item">Easy to learn, hard to master</div>
+            {% endif %}
+            
+            {% if product.metafields.custom.feature_5 %}
+              <div class="feature-item">{{ product.metafields.custom.feature_5 }}</div>
+            {% else %}
+              <div class="feature-item">Encourages social interaction</div>
+            {% endif %}
+            
+            {% if product.metafields.custom.feature_6 %}
+              <div class="feature-item">{{ product.metafields.custom.feature_6 }}</div>
+            {% else %}
+              <div class="feature-item">Multiple expansion packs available</div>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -733,7 +812,7 @@
             <div class="product-card-title">{{ product.title }}</div>
             <div class="product-card-rating">
               <span style="color: #ffc107;">★</span>
-              <span>4.5</span>
+              <span>{{ product.metafields.custom.rating_score | default: 4.5 }}</span>
             </div>
             <div class="product-card-footer">
               <span class="product-card-price">{{ product.price | money }}</span>
