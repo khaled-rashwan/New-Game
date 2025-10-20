@@ -246,6 +246,8 @@
                 {% if product.featured_image %}
                   <img src="{{ product.featured_image | img_url: '500x' }}" 
                        alt="{{ product.title }}" 
+                       width="500"
+                       height="500"
                        loading="lazy" />
                 {% else %}
                   <div class="image-placeholder">
