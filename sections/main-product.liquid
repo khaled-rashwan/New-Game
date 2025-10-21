@@ -562,7 +562,9 @@
 
 .spec-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 12px;
 }
 
@@ -844,10 +846,16 @@
 }
 
 .key-features {
+  margin-top: 16px;
+}
+
+.key-features ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .key-features li {
@@ -855,6 +863,15 @@
   align-items: flex-start;
   gap: 8px;
   color: #374151;
+  padding-left: 0;
+}
+
+.key-features li::before {
+  content: "●";
+  color: #FF6B35;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 /* Related Products */
