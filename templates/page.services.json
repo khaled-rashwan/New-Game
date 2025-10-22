@@ -132,12 +132,69 @@
       "settings": {
         "title": "How It Works"
       }
+    },
+    "services_testimonials_3YXHDr": {
+      "type": "services-testimonials",
+      "blocks": {
+        "testimonial_jGDCVt": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The team-building session was fantastic! Our team learned so much about collaboration through strategic games.",
+            "author_name": "Sarah Johnson",
+            "author_title": "Tech Innovations Inc."
+          }
+        },
+        "testimonial_tzXpYg": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "NewGame made our corporate event unforgettable. Professional service and amazing game selection!",
+            "author_name": "Mike Chen",
+            "author_title": "Event Organizer"
+          }
+        },
+        "testimonial_BnGDKP": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "They brought our game concept to life perfectly. The design process was smooth and the final product exceeded expectations.",
+            "author_name": "Lisa Rodriguez",
+            "author_title": "Creative Studios"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_jGDCVt",
+        "testimonial_tzXpYg",
+        "testimonial_BnGDKP"
+      ],
+      "name": "Services Testimonials",
+      "settings": {
+        "title": "What Our Clients Say"
+      }
+    },
+    "services_cta_jcPG49": {
+      "type": "services-cta",
+      "name": "Services CTA",
+      "settings": {
+        "title": "Ready to Get Started?",
+        "description": "Contact us today to discuss your gaming needs and get a custom quote.",
+        "show_quote_button": true,
+        "quote_text": "Request Quote",
+        "quote_link": "",
+        "show_phone_button": true,
+        "phone_text": "Call (555) 123-4567",
+        "phone_number": "(555) 123-4567",
+        "show_email_button": true,
+        "email_text": "Email Us",
+        "email_address": "hello@newgame.com"
+      }
     }
   },
   "order": [
     "main",
     "services_page_template_zfhfc7",
     "card_services_ekDqEp",
-    "how_it_work_3cRjrj"
+    "how_it_work_3cRjrj",
+    "services_testimonials_3YXHDr",
+    "services_cta_jcPG49"
   ]
 }
