@@ -1,0 +1,195 @@
+{% comment %}
+  Testimonials Section
+  Save as: sections/services-testimonials.liquid
+{% endcomment %}
+
+<div class="services-testimonials">
+  <div class="testimonials-container">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+
+    <div class="testimonials-grid">
+      {% for block in section.blocks %}
+        <div class="testimonial-card">
+          <div class="rating">
+            {% for i in (1..5) %}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFC107" stroke="none">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            {% endfor %}
+          </div>
+
+          <p class="testimonial-text">"{{ block.settings.quote }}"</p>
+
+          <div class="testimonial-author">
+            <strong>{{ block.settings.author_name }}</strong>
+            <span>{{ block.settings.author_title }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.services-testimonials {
+  background: #f9fafb;
+  padding: 80px 24px;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin: 0 0 60px 0;
+  letter-spacing: -0.5px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.rating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.testimonial-author strong {
+  font-size: 15px;
+  color: #111827;
+  font-weight: 600;
+}
+
+.testimonial-author span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+@media (max-width: 992px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-testimonials {
+    padding: 60px 20px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .testimonial-card {
+    padding: 24px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Services Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What Our Clients Say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "The service was fantastic! Highly recommend."
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "author_title",
+          "label": "Author Title",
+          "default": "Company Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The team-building session was fantastic! Our team learned so much about collaboration through strategic games.",
+            "author_name": "Sarah Johnson",
+            "author_title": "Tech Innovations Inc."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "NewGame made our corporate event unforgettable. Professional service and amazing game selection!",
+            "author_name": "Mike Chen",
+            "author_title": "Event Organizer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "They brought our game concept to life perfectly. The design process was smooth and the final product exceeded expectations.",
+            "author_name": "Lisa Rodriguez",
+            "author_title": "Creative Studios"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
