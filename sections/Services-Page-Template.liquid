@@ -1,0 +1,78 @@
+{% comment %}
+  Services Page - Header Section
+  Save as: sections/services-header.liquid
+{% endcomment %}
+
+<div class="services-header">
+  <div class="header-container">
+    <h1 class="services-title">{{ section.settings.title }}</h1>
+    <p class="services-subtitle">{{ section.settings.subtitle }}</p>
+  </div>
+</div>
+
+<style>
+.services-header {
+  background: white;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+.header-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.services-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.services-subtitle {
+  font-size: 18px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .services-header {
+    padding: 60px 20px 40px;
+  }
+  
+  .services-title {
+    font-size: 32px;
+  }
+  
+  .services-subtitle {
+    font-size: 16px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Services Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Services"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "From private events to custom game design, we offer comprehensive services to bring board gaming experiences to life."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services Header"
+    }
+  ]
+}
+{% endschema %}
