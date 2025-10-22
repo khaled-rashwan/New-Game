@@ -1,0 +1,251 @@
+{% comment %}
+  About Page - Our Values Section
+  Save as: sections/about-values.liquid
+{% endcomment %}
+
+<div class="about-values">
+  <div class="values-container">
+    <div class="values-header">
+      <h2 class="section-title">{{ section.settings.values_title }}</h2>
+      <p class="section-subtitle">{{ section.settings.values_subtitle }}</p>
+    </div>
+
+    <div class="values-grid">
+      {% for block in section.blocks %}
+        <div class="value-card">
+          <div class="value-icon">
+            {% if block.settings.icon == 'heart' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            {% elsif block.settings.icon == 'users' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            {% elsif block.settings.icon == 'award' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            {% elsif block.settings.icon == 'shield' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            {% endif %}
+          </div>
+          <h3 class="value-title">{{ block.settings.title }}</h3>
+          <p class="value-description">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.about-values {
+  background: #f9fafb;
+  padding: 80px 24px;
+}
+
+.values-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.values-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.value-card {
+  background: white;
+  padding: 32px 24px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+.value-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.value-description {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-values {
+    padding: 60px 20px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .value-card {
+    padding: 24px 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Values",
+  "settings": [
+    {
+      "type": "text",
+      "id": "values_title",
+      "label": "Section Title",
+      "default": "Our Values"
+    },
+    {
+      "type": "textarea",
+      "id": "values_subtitle",
+      "label": "Section Subtitle",
+      "default": "These core principles guide everything we do and shape how we serve our community"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "users",
+              "label": "Users"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "shield",
+              "label": "Shield"
+            }
+          ],
+          "default": "heart"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Passion for Gaming"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "We're gamers first, retailers second. Our love for board games drives everything we do."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Values",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "icon": "heart",
+            "title": "Passion for Gaming",
+            "description": "We're gamers first, retailers second. Our love for board games drives everything we do."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "users",
+            "title": "Community Focus",
+            "description": "Building connections and fostering friendships through the power of tabletop gaming."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "award",
+            "title": "Quality First",
+            "description": "We carefully curate our selection to bring you only the best gaming experiences."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "shield",
+            "title": "Trust & Reliability",
+            "description": "Your satisfaction is our priority. We stand behind every product we sell."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
