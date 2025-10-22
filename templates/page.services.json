@@ -89,11 +89,55 @@
       ],
       "name": "Services Cards",
       "settings": {}
+    },
+    "how_it_work_3cRjrj": {
+      "type": "how-it-work",
+      "blocks": {
+        "step_Aa6i8q": {
+          "type": "step",
+          "settings": {
+            "title": "Contact Us",
+            "description": "Reach out with your requirements"
+          }
+        },
+        "step_btUQbm": {
+          "type": "step",
+          "settings": {
+            "title": "Consultation",
+            "description": "We discuss your needs and preferences"
+          }
+        },
+        "step_W8Vr9n": {
+          "type": "step",
+          "settings": {
+            "title": "Custom Proposal",
+            "description": "Receive a tailored service proposal"
+          }
+        },
+        "step_kJRmmr": {
+          "type": "step",
+          "settings": {
+            "title": "Delivery",
+            "description": "Enjoy your perfect gaming experience"
+          }
+        }
+      },
+      "block_order": [
+        "step_Aa6i8q",
+        "step_btUQbm",
+        "step_W8Vr9n",
+        "step_kJRmmr"
+      ],
+      "name": "How It Works",
+      "settings": {
+        "title": "How It Works"
+      }
     }
   },
   "order": [
     "main",
     "services_page_template_zfhfc7",
-    "card_services_ekDqEp"
+    "card_services_ekDqEp",
+    "how_it_work_3cRjrj"
   ]
 }
