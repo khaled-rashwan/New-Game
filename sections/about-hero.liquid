@@ -1,0 +1,78 @@
+{% comment %}
+  About Page - Hero Section
+  Save as: sections/about-hero.liquid
+{% endcomment %}
+
+<div class="about-hero">
+  <div class="hero-container">
+    <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+    <p class="hero-description">{{ section.settings.hero_description }}</p>
+  </div>
+</div>
+
+<style>
+.about-hero {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.5px;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 60px 20px;
+  }
+  
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "About NewGame"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "We're more than just an online store. NewGame brings the joy of board games. Since 2005, we've been your trusted partner in discovering amazing games and building lasting memories."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero"
+    }
+  ]
+}
+{% endschema %}
