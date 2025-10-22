@@ -1,0 +1,172 @@
+{% comment %}
+  How It Works Section
+  Save as: sections/services-how-it-works.liquid
+{% endcomment %}
+
+<div class="how-it-works">
+  <div class="how-container">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+
+    <div class="steps-grid">
+      {% for block in section.blocks %}
+        <div class="step-item">
+          <div class="step-number">{{ forloop.index }}</div>
+          <h3 class="step-title">{{ block.settings.title }}</h3>
+          <p class="step-description">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.how-it-works {
+  background: white;
+  padding: 80px 24px;
+}
+
+.how-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin: 0 0 60px 0;
+  letter-spacing: -0.5px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.step-item {
+  text-align: center;
+}
+
+.step-number {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: #ff6b35;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.step-description {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .how-it-works {
+    padding: 60px 20px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "How It Works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Contact Us"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Step Description",
+          "default": "Reach out with your requirements"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Contact Us",
+            "description": "Reach out with your requirements"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Consultation",
+            "description": "We discuss your needs and preferences"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Custom Proposal",
+            "description": "Receive a tailored service proposal"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Delivery",
+            "description": "Enjoy your perfect gaming experience"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
