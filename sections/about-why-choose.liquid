@@ -1,0 +1,244 @@
+{% comment %}
+  About Page - Why Choose Us Section
+  Save as: sections/about-why-choose.liquid
+{% endcomment %}
+
+<div class="about-why-choose">
+  <div class="why-container">
+    <div class="why-header">
+      <h2 class="section-title">{{ section.settings.why_title }}</h2>
+      <p class="section-subtitle">{{ section.settings.why_subtitle }}</p>
+    </div>
+
+    <div class="why-grid">
+      {% for block in section.blocks %}
+        <div class="why-card">
+          <div class="why-icon">
+            {% if block.settings.icon == 'truck' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            {% elsif block.settings.icon == 'shield' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            {% elsif block.settings.icon == 'headphones' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+            {% elsif block.settings.icon == 'award' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            {% endif %}
+          </div>
+          <h3 class="why-title">{{ block.settings.title }}</h3>
+          <p class="why-description">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.about-why-choose {
+  background: white;
+  padding: 80px 24px;
+}
+
+.why-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.why-card {
+  text-align: center;
+  padding: 32px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.why-card:hover {
+  background: #f9fafb;
+}
+
+.why-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: #fff7ed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.why-description {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-why-choose {
+    padding: 60px 20px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "why_title",
+      "label": "Section Title",
+      "default": "Why Choose NewGame?"
+    },
+    {
+      "type": "textarea",
+      "id": "why_subtitle",
+      "label": "Section Subtitle",
+      "default": "We're committed to providing the best possible experience for every customer"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Truck (Shipping)"
+            },
+            {
+              "value": "shield",
+              "label": "Shield (Security)"
+            },
+            {
+              "value": "headphones",
+              "label": "Headphones (Support)"
+            },
+            {
+              "value": "award",
+              "label": "Award (Quality)"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fast Shipping"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Get your games delivered quickly with our efficient shipping."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast Shipping",
+            "description": "Free shipping on orders over $75. Get your games delivered quickly."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "shield",
+            "title": "Secure Shopping",
+            "description": "Your data is protected with industry-leading security measures."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "headphones",
+            "title": "Expert Support",
+            "description": "Our team of gaming experts is here to help with recommendations."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "award",
+            "title": "Quality Guarantee",
+            "description": "30-day return policy on all items. Your satisfaction matters."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
