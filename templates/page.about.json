@@ -11,13 +11,285 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "about_hero_b4XwUU": {
+      "type": "about-hero",
+      "name": "About Hero",
+      "settings": {
+        "hero_title": "About NewGame",
+        "hero_description": "We're more than just an online store. NewGame brings the joy of board games. Since 2005, we've been your trusted partner in discovering amazing games and building lasting memories."
+      }
+    },
+    "about_stats_zJk8RG": {
+      "type": "about-stats",
+      "name": "About Stats",
+      "settings": {
+        "stat_1_number": "50,000+",
+        "stat_1_label": "Happy Customers",
+        "stat_2_number": "2,500+",
+        "stat_2_label": "Games Available",
+        "stat_3_number": "500+",
+        "stat_3_label": "Events Hosted",
+        "stat_4_number": "15+",
+        "stat_4_label": "Years Experience"
+      }
+    },
+    "about_story_za6U37": {
+      "type": "about-story",
+      "name": "About Story",
+      "settings": {
+        "story_title": "Our Story",
+        "story_content": "<p>NewGame was born from a simple idea: board games have the power to bring people together in ways that digital entertainment simply can't match. Founded in 2005 by Sarah Johnson, a lifelong board game enthusiast, we set out as a small online retailer.</p><p>What began as a passion project has grown into one of the most trusted names in tabletop gaming. We've helped thousands of families discover their new favorite game, organized hundreds of local gaming events, and built a loyal community of board game fans across the country.</p><p>Today, we're proud to offer over 3,500 carefully curated games, host regular gaming events, and provide expert recommendations to help you find the perfect game for any occasion. But at our core, we're still the same passionate team that loves bringing people together through the joy of board games.</p>"
+      }
+    },
+    "about_values_kTDiJ7": {
+      "type": "about-values",
+      "blocks": {
+        "value_MPKEij": {
+          "type": "value",
+          "settings": {
+            "icon": "heart",
+            "title": "Passion for Gaming",
+            "description": "We're gamers first, retailers second. Our love for board games drives everything we do."
+          }
+        },
+        "value_LcM7gg": {
+          "type": "value",
+          "settings": {
+            "icon": "users",
+            "title": "Community Focus",
+            "description": "Building connections and fostering friendships through the power of tabletop gaming."
+          }
+        },
+        "value_PhdXgB": {
+          "type": "value",
+          "settings": {
+            "icon": "award",
+            "title": "Quality First",
+            "description": "We carefully curate our selection to bring you only the best gaming experiences."
+          }
+        },
+        "value_aTtKJ4": {
+          "type": "value",
+          "settings": {
+            "icon": "shield",
+            "title": "Trust & Reliability",
+            "description": "Your satisfaction is our priority. We stand behind every product we sell."
+          }
+        }
+      },
+      "block_order": [
+        "value_MPKEij",
+        "value_LcM7gg",
+        "value_PhdXgB",
+        "value_aTtKJ4"
+      ],
+      "name": "About Values",
+      "settings": {
+        "values_title": "Our Values",
+        "values_subtitle": "These core principles guide everything we do and shape how we serve our community"
+      }
+    },
+    "about_team_Ypybpe": {
+      "type": "about-team",
+      "blocks": {
+        "member_eGpx7y": {
+          "type": "member",
+          "settings": {
+            "name": "Sarah Johnson",
+            "role": "Founder & CEO",
+            "bio": "Board game enthusiast for over 20 years. Started NewGame to share her passion with fellow gamers.",
+            "expertise": "Strategy Games, Euro Games, Business Development"
+          }
+        },
+        "member_YfUVrQ": {
+          "type": "member",
+          "settings": {
+            "name": "Mike Chen",
+            "role": "Head of Operations",
+            "bio": "Logistics expert who ensures every order reaches customers under ideal conditions.",
+            "expertise": "Inventory Management, Customer Service"
+          }
+        },
+        "member_LNgCwC": {
+          "type": "member",
+          "settings": {
+            "name": "Emily Rodriguez",
+            "role": "Community Manager",
+            "bio": "Event coordinator who brings people together through amazing gaming experiences.",
+            "expertise": "Event Planning, Social Media, Community Building"
+          }
+        },
+        "member_Aqwkt9": {
+          "type": "member",
+          "settings": {
+            "name": "David Kim",
+            "role": "Product Specialist",
+            "bio": "Game reviewer and expert who helps curate our amazing selection.",
+            "expertise": "Product Curation, Game Reviews, Industry Trends"
+          }
+        }
+      },
+      "block_order": [
+        "member_eGpx7y",
+        "member_YfUVrQ",
+        "member_LNgCwC",
+        "member_Aqwkt9"
+      ],
+      "name": "About Team",
+      "settings": {
+        "team_title": "Meet Our Team",
+        "team_subtitle": "The passionate people behind NewGame, dedicated to bringing you the best gaming experience"
+      }
+    },
+    "about_why_choose_t8ncab": {
+      "type": "about-why-choose",
+      "blocks": {
+        "reason_ghy8Ag": {
+          "type": "reason",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast Shipping",
+            "description": "Free shipping on orders over $75. Get your games delivered quickly."
+          }
+        },
+        "reason_MqdfgM": {
+          "type": "reason",
+          "settings": {
+            "icon": "shield",
+            "title": "Secure Shopping",
+            "description": "Your data is protected with industry-leading security measures."
+          }
+        },
+        "reason_mmd6nL": {
+          "type": "reason",
+          "settings": {
+            "icon": "headphones",
+            "title": "Expert Support",
+            "description": "Our team of gaming experts is here to help with recommendations."
+          }
+        },
+        "reason_bkjtfJ": {
+          "type": "reason",
+          "settings": {
+            "icon": "award",
+            "title": "Quality Guarantee",
+            "description": "30-day return policy on all items. Your satisfaction matters."
+          }
+        }
+      },
+      "block_order": [
+        "reason_ghy8Ag",
+        "reason_MqdfgM",
+        "reason_mmd6nL",
+        "reason_bkjtfJ"
+      ],
+      "name": "Why Choose Us",
+      "settings": {
+        "why_title": "Why Choose NewGame?",
+        "why_subtitle": "We're committed to providing the best possible experience for every customer"
+      }
+    },
+    "about_timeline_wDCeTq": {
+      "type": "about-timeline",
+      "blocks": {
+        "milestone_wHP8km": {
+          "type": "milestone",
+          "settings": {
+            "year": "2005",
+            "event": "NewGame Founded",
+            "description": "Started as a small local game store with a passion for bringing people together."
+          }
+        },
+        "milestone_TpMkpn": {
+          "type": "milestone",
+          "settings": {
+            "year": "2012",
+            "event": "Online Store Launch",
+            "description": "Expanded to serve customers nationwide with our e-commerce platform."
+          }
+        },
+        "milestone_UQkCVe": {
+          "type": "milestone",
+          "settings": {
+            "year": "2016",
+            "event": "Event Space Opening",
+            "description": "Opened our dedicated gaming space for tournaments and community events."
+          }
+        },
+        "milestone_QtWELg": {
+          "type": "milestone",
+          "settings": {
+            "year": "2019",
+            "event": "50,000 Customers",
+            "description": "Reached a major milestone with a growing community of board game enthusiasts."
+          }
+        },
+        "milestone_9rx7wE": {
+          "type": "milestone",
+          "settings": {
+            "year": "2021",
+            "event": "Award Recognition",
+            "description": "Named 'Best Board Game Store' by the Tabletop Gaming Association."
+          }
+        },
+        "milestone_apcFBw": {
+          "type": "milestone",
+          "settings": {
+            "year": "2024",
+            "event": "Expansion & Growth",
+            "description": "Continuing to grow our selection and our commitment to better serve our community."
+          }
+        }
+      },
+      "block_order": [
+        "milestone_wHP8km",
+        "milestone_TpMkpn",
+        "milestone_UQkCVe",
+        "milestone_QtWELg",
+        "milestone_9rx7wE",
+        "milestone_apcFBw"
+      ],
+      "name": "About Timeline",
+      "settings": {
+        "timeline_title": "Our Journey",
+        "timeline_subtitle": "Key milestones in our mission to bring amazing board games to everyone"
+      }
+    },
+    "about_contact_WRA9am": {
+      "type": "about-contact",
+      "name": "About Contact",
+      "settings": {
+        "contact_title": "Get in Touch",
+        "contact_subtitle": "Have questions or want to learn more? We'd love to hear from you",
+        "visit_title": "Visit Our Store",
+        "store_address": "123 Gaming Street\nYour City, State 12345",
+        "call_title": "Call Us",
+        "phone_number": "(555) 123-4567",
+        "phone_hours": "Mon-Fri: 9AM - 6PM EST",
+        "email_title": "Email Us",
+        "email_address": "hello@newgame.com",
+        "email_response": "We'll respond within 24 hours",
+        "show_cta_button": true,
+        "cta_text": "Contact Us Today",
+        "cta_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "about_hero_b4XwUU",
+    "about_stats_zJk8RG",
+    "about_story_za6U37",
+    "about_values_kTDiJ7",
+    "about_team_Ypybpe",
+    "about_timeline_wDCeTq",
+    "about_why_choose_t8ncab",
+    "about_contact_WRA9am"
   ]
 }
