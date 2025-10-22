@@ -61,6 +61,24 @@
     },
     "past_events": {
       "type": "events-past",
+      "blocks": {
+        "past_event_RMYret": {
+          "type": "past_event",
+          "settings": {
+            "category": "Festival",
+            "date": "12/15/2023",
+            "title": "Winter Game Festival 2023",
+            "description": "Our biggest event of 2023 with over 100 games\nshowcased.",
+            "attendees": "250 attendees",
+            "video_link": "#",
+            "photos_link": "#",
+            "details_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "past_event_RMYret"
+      ],
       "settings": {
         "section_title": "Past Events",
         "search_placeholder": "Search past events...",
