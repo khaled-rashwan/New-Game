@@ -1,0 +1,291 @@
+{% comment %}
+  About Page - Meet Our Team Section
+  Save as: sections/about-team.liquid
+{% endcomment %}
+
+<div class="about-team">
+  <div class="team-container">
+    <div class="team-header">
+      <h2 class="section-title">{{ section.settings.team_title }}</h2>
+      <p class="section-subtitle">{{ section.settings.team_subtitle }}</p>
+    </div>
+
+    <div class="team-grid">
+      {% for block in section.blocks %}
+        <div class="team-member">
+          <div class="member-photo">
+            {% if block.settings.photo %}
+              <img src="{{ block.settings.photo | img_url: '300x' }}" 
+                   alt="{{ block.settings.name }}"
+                   width="300"
+                   height="300"
+                   loading="lazy" />
+            {% else %}
+              <div class="photo-placeholder">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1.5">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="member-info">
+            <h3 class="member-name">{{ block.settings.name }}</h3>
+            <p class="member-role">{{ block.settings.role }}</p>
+            <p class="member-bio">{{ block.settings.bio }}</p>
+
+            {% if block.settings.expertise %}
+              <div class="member-expertise">
+                {% assign expertise_items = block.settings.expertise | split: ',' %}
+                {% for item in expertise_items %}
+                  <span class="expertise-tag">{{ item | strip }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.about-team {
+  background: white;
+  padding: 80px 24px;
+}
+
+.team-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.team-member {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+.member-photo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+.member-info {
+  text-align: center;
+}
+
+.member-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.member-role {
+  font-size: 14px;
+  color: #ff6b35;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.member-bio {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.member-expertise {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.expertise-tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  background: #f3f4f6;
+  color: #6b7280;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+@media (max-width: 992px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-team {
+    padding: 60px 20px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "team_title",
+      "label": "Section Title",
+      "default": "Meet Our Team"
+    },
+    {
+      "type": "textarea",
+      "id": "team_subtitle",
+      "label": "Section Subtitle",
+      "default": "The passionate people behind NewGame, dedicated to bringing you the best gaming experience"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Team Member"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Position Title"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Bio",
+          "default": "Brief bio about this team member and their passion for gaming."
+        },
+        {
+          "type": "text",
+          "id": "expertise",
+          "label": "Expertise (comma separated)",
+          "default": "Strategy Games, Customer Service, Event Planning",
+          "info": "Separate skills with commas"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Team",
+      "blocks": [
+        {
+          "type": "member",
+          "settings": {
+            "name": "Sarah Johnson",
+            "role": "Founder & CEO",
+            "bio": "Board game enthusiast for over 20 years. Started NewGame to share her passion with fellow gamers.",
+            "expertise": "Strategy Games, Euro Games, Business Development"
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Mike Chen",
+            "role": "Head of Operations",
+            "bio": "Logistics expert who ensures every order reaches customers under ideal conditions.",
+            "expertise": "Inventory Management, Customer Service"
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Emily Rodriguez",
+            "role": "Community Manager",
+            "bio": "Event coordinator who brings people together through amazing gaming experiences.",
+            "expertise": "Event Planning, Social Media, Community Building"
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "David Kim",
+            "role": "Product Specialist",
+            "bio": "Game reviewer and expert who helps curate our amazing selection.",
+            "expertise": "Product Curation, Game Reviews, Industry Trends"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
