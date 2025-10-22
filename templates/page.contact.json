@@ -17,37 +17,94 @@
         "padding_bottom": 36
       }
     },
-    "about_hero_aXncDe": {
-      "type": "about-hero",
-      "name": "About Hero",
+    "contact_page_yFcEtk": {
+      "type": "contact-page",
+      "blocks": {
+        "category_bRhL3E": {
+          "type": "category",
+          "settings": {
+            "icon": "package",
+            "title": "Orders & Shipping",
+            "description": "Track orders, shipping issues, returns"
+          }
+        },
+        "category_7Rh9jz": {
+          "type": "category",
+          "settings": {
+            "icon": "credit-card",
+            "title": "Billing & Payments",
+            "description": "Payment issues, refunds, billing questions"
+          }
+        },
+        "category_DV6e9z": {
+          "type": "category",
+          "settings": {
+            "icon": "user",
+            "title": "Account Support",
+            "description": "Login issues, account settings, profile"
+          }
+        },
+        "category_rELCbM": {
+          "type": "category",
+          "settings": {
+            "icon": "calendar",
+            "title": "Events & Services",
+            "description": "Event bookings, game services, consultations"
+          }
+        }
+      },
+      "block_order": [
+        "category_bRhL3E",
+        "category_7Rh9jz",
+        "category_DV6e9z",
+        "category_rELCbM"
+      ],
+      "name": "Contact Page",
       "settings": {
         "hero_title": "Get in Touch",
-        "hero_description": "We're here to help! Whether you have questions about games, need\nsupport, or want to share feedback, our team is ready to assist you."
-      }
-    },
-    "about_contact_4Mkcba": {
-      "type": "about-contact",
-      "name": "About Contact",
-      "settings": {
-        "contact_title": "",
-        "contact_subtitle": "",
-        "visit_title": "Visit Our Store",
-        "store_address": "123 Gaming Street\nYour City, State 12345",
-        "call_title": "Call Us",
-        "phone_number": "(555) 123-4567",
-        "phone_hours": "Mon-Fri: 9AM - 6PM EST",
-        "email_title": "Email Us",
-        "email_address": "hello@newgame.com",
-        "email_response": "We'll respond within 24 hours",
-        "show_cta_button": true,
-        "cta_text": "Contact Us Today",
-        "cta_link": ""
+        "hero_description": "We're here to help! Whether you have questions about games, need support, or want to share feedback, our team is ready to assist you.",
+        "phone_title": "Phone Support",
+        "phone_description": "Speak directly with our support team",
+        "phone_number": "+1 (555) 123-4567",
+        "phone_hours": "Mon-Fri: 9AM-8PM EST",
+        "email_title": "Email Support",
+        "email_description": "Send us a detailed message",
+        "email_address": "support@newgame.com",
+        "email_response": "Response within 24 hours",
+        "chat_title": "Live Chat",
+        "chat_description": "Chat with us in real-time",
+        "chat_availability": "Available on website",
+        "chat_hours": "Mon-Fri: 9AM-6PM EST",
+        "form_title": "Send us a Message",
+        "form_description": "Fill out the form below and we'll get back to you as soon as possible.",
+        "name_label": "Full Name",
+        "name_placeholder": "Your full name",
+        "email_label": "Email Address",
+        "email_placeholder": "your.email@example.com",
+        "category_label": "Category",
+        "category_placeholder": "Select a category",
+        "subject_label": "Subject",
+        "subject_placeholder": "Brief description of your inquiry",
+        "message_label": "Message",
+        "message_placeholder": "Please provide as much detail as possible...",
+        "submit_text": "Send Message",
+        "success_message": "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+        "categories_title": "Support Categories",
+        "categories_description": "Choose the right category for faster assistance",
+        "store_title": "Visit Our Store",
+        "store_name": "NewGame Board Game Store",
+        "store_address": "123 Gaming Street\nNew York, NY 10001",
+        "store_hours_weekday": "Mon-Fri: 10AM-8PM",
+        "store_hours_weekend": "Sat-Sun: 10AM-6PM",
+        "store_phone": "+1 (555) 123-4567",
+        "show_directions_button": true,
+        "directions_text": "Get Directions",
+        "directions_link": ""
       }
     }
   },
   "order": [
     "main",
-    "about_hero_aXncDe",
-    "about_contact_4Mkcba"
+    "contact_page_yFcEtk"
   ]
 }
