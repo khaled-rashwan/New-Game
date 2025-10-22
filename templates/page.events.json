@@ -33,10 +33,26 @@
             "price": "$25",
             "register_link": ""
           }
+        },
+        "event_LehxN6": {
+          "type": "event",
+          "settings": {
+            "is_featured": false,
+            "category": "Family",
+            "title": "Family Game Night",
+            "description": "A fun evening for families to discover new games\nand enjoy quality time together.",
+            "date": "3/22/2024",
+            "time": "6:00 PM",
+            "location": "Community Center",
+            "registered": "28/50",
+            "price": "$25",
+            "register_link": ""
+          }
         }
       },
       "block_order": [
-        "event_hGUUVj"
+        "event_hGUUVj",
+        "event_LehxN6"
       ],
       "settings": {
         "section_title": "Upcoming Events",
