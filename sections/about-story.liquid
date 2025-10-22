@@ -1,0 +1,145 @@
+{% comment %}
+  About Page - Our Story Section
+  Save as: sections/about-story.liquid
+{% endcomment %}
+
+<div class="about-story">
+  <div class="story-container">
+    <div class="story-content">
+      <h2 class="section-title">{{ section.settings.story_title }}</h2>
+      <div class="story-text">
+        {{ section.settings.story_content }}
+      </div>
+    </div>
+    
+    <div class="story-image">
+      {% if section.settings.story_image %}
+        <img src="{{ section.settings.story_image | img_url: '800x' }}" 
+             alt="{{ section.settings.story_title }}"
+             width="800"
+             height="600"
+             loading="lazy" />
+      {% else %}
+        <div class="image-placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.about-story {
+  background: white;
+  padding: 80px 24px;
+}
+
+.story-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.5px;
+}
+
+.story-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6b7280;
+}
+
+.story-text p {
+  margin-bottom: 16px;
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
+.story-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+@media (max-width: 992px) {
+  .story-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-story {
+    padding: 60px 20px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .story-text {
+    font-size: 15px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "story_title",
+      "label": "Section Title",
+      "default": "Our Story"
+    },
+    {
+      "type": "richtext",
+      "id": "story_content",
+      "label": "Story Content",
+      "default": "<p>NewGame was born from a simple idea: board games have the power to bring people together in ways that digital entertainment simply can't match. Founded in 2005 by Sarah Johnson, a lifelong board game enthusiast, we set out as a small online retailer.</p><p>What began as a passion project has grown into one of the most trusted names in tabletop gaming. We've helped thousands of families discover their new favorite game, organized hundreds of local gaming events, and built a loyal community of board game fans across the country.</p><p>Today, we're proud to offer over 3,500 carefully curated games, host regular gaming events, and provide expert recommendations to help you find the perfect game for any occasion. But at our core, we're still the same passionate team that loves bringing people together through the joy of board games.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Story"
+    }
+  ]
+}
+{% endschema %}
