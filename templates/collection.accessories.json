@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "page_title": "Board Games",
+        "page_subtitle": "Discover amazing board games for every occasion and skill level.",
+        "search_placeholder": "Search games...",
+        "tab_all": "All",
+        "tab_strategy": "Strategy",
+        "tab_family": "Family",
+        "tab_cooperative": "Cooperative",
+        "tab_abstract": "Abstract",
+        "tab_party": "Party",
+        "tab_card": "Card",
+        "filters_title": "Filters",
+        "price_filter_title": "Price Range",
+        "show_complexity": true,
+        "complexity_title": "Complexity",
+        "show_age": true,
+        "age_title": "Age",
+        "show_language": true,
+        "language_title": "Language",
+        "show_availability": true,
+        "availability_title": "Availability",
+        "clear_filters_text": "Clear All Filters",
+        "add_to_cart_text": "Add to Cart",
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#374151",
+        "subtitle_color": "#6b7280",
+        "button_color": "#000000",
+        "button_hover_color": "#1f2937",
+        "button_text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}
