@@ -9,578 +9,192 @@
  */
 {
   "sections": {
-    "hero_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Level Up Your Gaming Experience :)",
-            "heading_size": "h0"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Discover the latest games, consoles, and accessories for every gamer",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "View Collections",
-            "button_link_2": "shopify://pages/collections",
-            "button_style_secondary_2": true
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
+    "home_hero_bEqz8e": {
+      "type": "home-hero",
+      "name": "Home Hero",
       "settings": {
-        "image_overlay_opacity": 30,
-        "image_height": "large",
-        "adapt_height_first_image": false,
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "title_line1": "Discover Your Next",
+        "title_line2": "Gaming Adventure",
+        "description": "From strategy masterpieces to family favorites, find the perfect board games for every occasion. Join thousands of happy gamers worldwide.",
+        "show_button": true,
+        "button_text": "Shop Games",
+        "button_link": ""
       }
     },
-    "trust_badges_tYxNxb": {
-      "type": "trust-badges",
+    "home_features_bar_dgBaie": {
+      "type": "home-features-bar",
       "blocks": {
-        "badge_d8Fx4W": {
-          "type": "badge",
+        "feature_XfNwe3": {
+          "type": "feature",
           "settings": {
-            "custom_icon": "shopify://shop_images/SVG_66.svg",
             "icon": "shield",
-            "icon_color": "#10b981",
             "title": "Secure Shopping",
-            "subtitle": "SSL Protected"
+            "description": "SSL Protected"
           }
         },
-        "badge_CFbkUL": {
-          "type": "badge",
+        "feature_KrjNEH": {
+          "type": "feature",
           "settings": {
-            "custom_icon": "shopify://shop_images/SVG_67.svg",
             "icon": "truck",
-            "icon_color": "#3b82f6",
             "title": "Free Shipping",
-            "subtitle": "Orders over $75"
+            "description": "Orders over $75"
           }
         },
-        "badge_XezgJ3": {
-          "type": "badge",
+        "feature_G6iNiA": {
+          "type": "feature",
           "settings": {
-            "custom_icon": "shopify://shop_images/SVG_68.svg",
-            "icon": "refresh",
-            "icon_color": "#8b5cf6",
+            "icon": "rotate",
             "title": "Easy Returns",
-            "subtitle": "30-day policy"
+            "description": "30-day policy"
           }
         },
-        "badge_FAGrc9": {
-          "type": "badge",
+        "feature_83ecpt": {
+          "type": "feature",
           "settings": {
-            "custom_icon": "shopify://shop_images/SVG_69.svg",
             "icon": "star",
-            "icon_color": "#f59e0b",
             "title": "5-Star Reviews",
-            "subtitle": "1000+ happy customers"
+            "description": "1000+ happy customers"
           }
         }
       },
       "block_order": [
-        "badge_d8Fx4W",
-        "badge_CFbkUL",
-        "badge_XezgJ3",
-        "badge_FAGrc9"
+        "feature_XfNwe3",
+        "feature_KrjNEH",
+        "feature_G6iNiA",
+        "feature_83ecpt"
       ],
-      "name": "Trust Badges",
-      "settings": {
-        "background_color": "#f9f9f9",
-        "container_width": 1200,
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "spacing": 40,
-        "icon_size": 40,
-        "title_size": 16,
-        "title_weight": "600",
-        "title_color": "#000000",
-        "subtitle_size": 13,
-        "subtitle_color": "#666666"
-      }
+      "name": "Features Bar",
+      "settings": {}
     },
-    "featured_products_4U6TNk": {
-      "type": "featured-products",
-      "blocks": {
-        "product_FniYRT": {
-          "type": "product",
-          "settings": {
-            "product": "catan",
-            "category": "Strategy",
-            "rating": "4.8",
-            "show_meta": true,
-            "players": "3-4",
-            "duration": "60-90 min",
-            "show_sale_badge": false,
-            "sale_badge_text": "Sale",
-            "show_new_badge": false,
-            "new_badge_text": "New",
-            "custom_badge": "",
-            "button_text": "Add to Cart"
-          }
-        },
-        "product_4t6KGi": {
-          "type": "product",
-          "settings": {
-            "product": "catan",
-            "category": "Strategy",
-            "rating": "4.8",
-            "show_meta": true,
-            "players": "3-4",
-            "duration": "60-90 min",
-            "show_sale_badge": false,
-            "sale_badge_text": "Sale",
-            "show_new_badge": false,
-            "new_badge_text": "New",
-            "custom_badge": "",
-            "button_text": "Add to Cart"
-          }
-        },
-        "product_B6py4A": {
-          "type": "product",
-          "settings": {
-            "product": "catan",
-            "category": "Strategy",
-            "rating": "4.8",
-            "show_meta": true,
-            "players": "3-4",
-            "duration": "60-90 min",
-            "show_sale_badge": false,
-            "sale_badge_text": "Sale",
-            "show_new_badge": false,
-            "new_badge_text": "New",
-            "custom_badge": "",
-            "button_text": "Add to Cart"
-          }
-        },
-        "product_mwaBDK": {
-          "type": "product",
-          "settings": {
-            "product": "catan",
-            "category": "Strategy",
-            "rating": "4.8",
-            "show_meta": true,
-            "players": "3-4",
-            "duration": "60-90 min",
-            "show_sale_badge": false,
-            "sale_badge_text": "Sale",
-            "show_new_badge": false,
-            "new_badge_text": "New",
-            "custom_badge": "",
-            "button_text": "Add to Cart"
-          }
-        }
-      },
-      "block_order": [
-        "product_FniYRT",
-        "product_4t6KGi",
-        "product_B6py4A",
-        "product_mwaBDK"
-      ],
+    "home_featured_products_aBrzXX": {
+      "type": "home-featured-products",
       "name": "Featured Products",
       "settings": {
-        "show_header": true,
         "title": "Featured Games",
-        "title_size": 40,
-        "title_color": "#1f2937",
-        "description": "Handpicked favorites that bring friends and families together for unforgettable gaming experiences.",
-        "description_size": 16,
-        "description_color": "#6b7280",
-        "products_per_row": 4,
-        "container_width": 1400,
-        "background_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "show_wishlist": true,
-        "custom_badge_bg": "#6366f1",
-        "custom_badge_text": "#ffffff",
+        "subtitle": "Handpicked favorites that bring friends and families together for unforgettable gaming experiences.",
+        "collection": "frontpage",
+        "products_to_show": 4,
         "show_view_all": true,
         "view_all_text": "View All Games",
-        "view_all_url": ""
+        "view_all_link": ""
       }
     },
-    "featured_categories": {
-      "type": "multicolumn",
+    "home_services_3e8Kqh": {
+      "type": "home-services",
       "blocks": {
-        "column1": {
-          "type": "column",
+        "service_WGtirj": {
+          "type": "service",
           "settings": {
-            "title": "Consoles",
-            "text": "<p>Latest gaming consoles and bundles. Experience next-gen gaming at its finest.</p>",
-            "link_label": "Shop Consoles",
-            "link": ""
+            "icon": "palette",
+            "title": "Custom Game Design",
+            "description": "Bring your game ideas to life with our professional design services.",
+            "link_text": "Learn More",
+            "link_url": ""
           }
         },
-        "column2": {
-          "type": "column",
+        "service_DR6g6T": {
+          "type": "service",
           "settings": {
-            "title": "PC Gaming",
-            "text": "<p>High-performance gaming PCs, components, and peripherals for serious gamers.</p>",
-            "link_label": "Shop PC Gaming",
-            "link": ""
+            "icon": "party",
+            "title": "Private Events",
+            "description": "Host exclusive gaming sessions with expert game masters.",
+            "link_text": "Learn More",
+            "link_url": ""
           }
         },
-        "column3": {
-          "type": "column",
+        "service_hxy9CC": {
+          "type": "service",
           "settings": {
-            "title": "Games",
-            "text": "<p>Browse our extensive library of the latest and greatest games across all platforms.</p>",
-            "link_label": "Shop Games",
-            "link": ""
+            "icon": "trophy",
+            "title": "Team Building",
+            "description": "Strengthen bonds through strategic board game challenges.",
+            "link_text": "Learn More",
+            "link_url": ""
           }
         },
-        "column4": {
-          "type": "column",
+        "service_J86h3R": {
+          "type": "service",
           "settings": {
-            "title": "Accessories",
-            "text": "<p>Premium gaming accessories, controllers, headsets, and more to enhance your setup.</p>",
-            "link_label": "Shop Accessories",
-            "link": ""
+            "icon": "box",
+            "title": "Game Rental",
+            "description": "Rent premium games for your events and parties.",
+            "link_text": "Learn More",
+            "link_url": ""
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3",
-        "column4"
+        "service_WGtirj",
+        "service_DR6g6T",
+        "service_hxy9CC",
+        "service_J86h3R"
       ],
+      "name": "Home Services",
       "settings": {
-        "title": "Shop by Category",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "title": "More Than Just Games",
+        "subtitle": "From custom game design to unforgettable events, we offer comprehensive gaming services."
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "home_cta_BbDeyk": {
+      "type": "home-cta",
+      "name": "Home CTA",
       "settings": {
-        "title": "New Arrivals",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": true,
-        "color_scheme": "background-1",
-        "image_ratio": "portrait",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "enable_quick_add": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "title": "Ready to Start Your Gaming Journey?",
+        "subtitle": "Discover amazing games, join our community events, and create unforgettable memories with friends and family.",
+        "show_primary_button": true,
+        "primary_text": "Start Shopping",
+        "primary_link": "",
+        "show_secondary_button": true,
+        "secondary_text": "Join an Event",
+        "secondary_link": ""
       }
     },
-    "image_with_text_1": {
-      "type": "image-with-text",
+    "home_testimonials_YLB4M6": {
+      "type": "home-testimonials",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "testimonial_wMk9TE": {
+          "type": "testimonial",
           "settings": {
-            "heading": "Exclusive Gaming Deals",
-            "heading_size": "h1"
+            "quote": "Amazing selection and fast shipping! Found games I couldn't get anywhere else.",
+            "author_name": "Sarah Johnson",
+            "author_location": "California"
           }
         },
-        "text": {
-          "type": "text",
+        "testimonial_KVrEUg": {
+          "type": "testimonial",
           "settings": {
-            "text": "<p>Get the best prices on the latest games and gaming hardware. Limited time offers on top titles and exclusive bundles. Don't miss out on incredible savings!</p>",
-            "text_style": "body"
+            "quote": "The custom game design service exceeded our expectations. Highly recommended!",
+            "author_name": "Mike Chen",
+            "author_location": "New York"
           }
         },
-        "button": {
-          "type": "button",
+        "testimonial_gHLUmF": {
+          "type": "testimonial",
           "settings": {
-            "button_label": "View All Deals",
-            "button_link": ""
+            "quote": "Great customer service and the events are so much fun. Our family loves coming here!",
+            "author_name": "Emily Rodriguez",
+            "author_location": "Texas"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "testimonial_wMk9TE",
+        "testimonial_KVrEUg",
+        "testimonial_gHLUmF"
       ],
+      "name": "Home Testimonials",
       "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-2",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection_2": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Best Sellers",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": true,
-        "color_scheme": "background-2",
-        "image_ratio": "portrait",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "enable_quick_add": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "image_with_text_2": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Build Your Ultimate Gaming Setup",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>From high-performance gaming chairs to immersive surround sound systems, we have everything you need to create the perfect gaming environment. Elevate your gaming experience with our premium accessories and setups.</p>",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Explore Gaming Setups",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "why_choose_us": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/SVG_66.svg",
-            "title": "Secure Shopping",
-            "text": "<p>SSL Protected</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Orders over $75</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Easy Returns",
-            "text": "<p>30-day policy</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column4": {
-          "type": "column",
-          "settings": {
-            "title": "5-Star Reviews",
-            "text": "<p>1000+ happy customers</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3",
-        "column4"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "circle",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "brands_showcase": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "settings": {
-        "heading": "Featured Brands & Collections",
-        "heading_size": "h1",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "card_styles": "product-card-wrapper",
-        "color_scheme": "background-2",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "<p>Your Premier Gaming Destination</p>",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Welcome to New Game, where gamers find their next adventure. We're passionate about gaming and committed to bringing you the best selection of games, consoles, and accessories at unbeatable prices. Whether you're a casual player or a competitive esports athlete, we have everything you need to level up your gaming experience.</p>"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn More About Us",
-            "button_link": "shopify://pages/about",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-2",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "title": "What Our Customers Say",
+        "subtitle": "Join thousands of satisfied gamers worldwide"
       }
     }
   },
   "order": [
-    "hero_banner",
-    "trust_badges_tYxNxb",
-    "featured_products_4U6TNk",
-    "featured_categories",
-    "featured_collection",
-    "image_with_text_1",
-    "featured_collection_2",
-    "image_with_text_2",
-    "why_choose_us",
-    "brands_showcase",
-    "rich_text"
+    "home_hero_bEqz8e",
+    "home_features_bar_dgBaie",
+    "home_featured_products_aBrzXX",
+    "home_services_3e8Kqh",
+    "home_testimonials_YLB4M6",
+    "home_cta_BbDeyk"
   ]
 }
