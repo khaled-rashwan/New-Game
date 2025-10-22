@@ -1,0 +1,533 @@
+{% comment %}
+  Events - Past Events Section
+  Save as: sections/events-past.liquid
+{% endcomment %}
+
+<div class="past-events">
+  <div class="past-container">
+    <h2 class="section-title">{{ section.settings.section_title }}</h2>
+
+    <!-- Search and Filter -->
+    <div class="search-filter-bar">
+      <div class="search-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" id="pastEventSearch" placeholder="{{ section.settings.search_placeholder }}" />
+      </div>
+
+      <select class="category-filter" id="categoryFilter">
+        <option value="all">{{ section.settings.filter_all_text }}</option>
+        <option value="festival">Festival</option>
+        <option value="showcase">Showcase</option>
+        <option value="themed">Themed</option>
+        <option value="workshop">Workshop</option>
+        <option value="tournament">Tournament</option>
+      </select>
+    </div>
+
+    <!-- Past Events Grid -->
+    <div class="past-events-grid" id="pastEventsGrid">
+      {% for block in section.blocks %}
+        <div class="past-event-card" data-category="{{ block.settings.category | downcase }}">
+          <div class="past-event-image">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | img_url: '500x' }}" 
+                   alt="{{ block.settings.title }}"
+                   width="500"
+                   height="300"
+                   loading="lazy" />
+            {% else %}
+              <div class="image-placeholder-past">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="past-event-content">
+            <div class="past-event-header">
+              <span class="past-category">{{ block.settings.category }}</span>
+              <span class="past-date">{{ block.settings.date }}</span>
+            </div>
+
+            <h3 class="past-event-title">{{ block.settings.title }}</h3>
+            <p class="past-event-description">{{ block.settings.description }}</p>
+
+            <div class="past-event-attendees">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>{{ block.settings.attendees }}</span>
+            </div>
+
+            <div class="past-event-actions">
+              {% if block.settings.video_link %}
+                <button class="action-btn" onclick="window.open('{{ block.settings.video_link }}', '_blank')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  {{ section.settings.video_text }}
+                </button>
+              {% endif %}
+
+              {% if block.settings.photos_link %}
+                <button class="action-btn" onclick="window.open('{{ block.settings.photos_link }}', '_blank')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                  {{ section.settings.photos_text }}
+                </button>
+              {% endif %}
+
+              {% if block.settings.details_link %}
+                <button class="action-btn" onclick="window.location.href='{{ block.settings.details_link }}'">
+                  {{ section.settings.details_text }}
+                </button>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.past-events {
+  background: white;
+  padding: 80px 24px;
+}
+
+.past-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 32px 0;
+}
+
+/* Search and Filter */
+.search-filter-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+.search-box svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 16px 12px 48px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.search-box input:focus {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.category-filter {
+  padding: 12px 40px 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;
+  appearance: none;
+  outline: none;
+  font-family: inherit;
+  min-width: 200px;
+}
+
+.category-filter:focus {
+  border-color: #ff6b35;
+}
+
+/* Past Events Grid */
+.past-events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.past-event-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.past-event-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.past-event-image {
+  width: 100%;
+  height: 200px;
+  background: #f3f4f6;
+}
+
+.past-event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder-past {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+.past-event-content {
+  padding: 24px;
+}
+
+.past-event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.past-category {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: capitalize;
+}
+
+.past-date {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.past-event-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.past-event-description {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.past-event-attendees {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.past-event-attendees svg {
+  flex-shrink: 0;
+}
+
+.past-event-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: white;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.action-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.action-btn svg {
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .past-events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .past-events {
+    padding: 60px 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .search-filter-bar {
+    flex-direction: column;
+  }
+
+  .search-box {
+    min-width: 100%;
+  }
+
+  .category-filter {
+    min-width: 100%;
+  }
+
+  .past-events-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('pastEventSearch');
+  const categoryFilter = document.getElementById('categoryFilter');
+  const eventCards = document.querySelectorAll('.past-event-card');
+
+  function filterEvents() {
+    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+    const selectedCategory = categoryFilter ? categoryFilter.value : 'all';
+
+    eventCards.forEach(card => {
+      const title = card.querySelector('.past-event-title').textContent.toLowerCase();
+      const description = card.querySelector('.past-event-description').textContent.toLowerCase();
+      const category = card.dataset.category.toLowerCase();
+
+      const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+      const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+      if (matchesSearch && matchesCategory) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', filterEvents);
+  }
+
+  if (categoryFilter) {
+    categoryFilter.addEventListener('change', filterEvents);
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Past Events",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Past Events"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder",
+      "default": "Search past events..."
+    },
+    {
+      "type": "text",
+      "id": "filter_all_text",
+      "label": "Filter All Text",
+      "default": "All Categories"
+    },
+    {
+      "type": "text",
+      "id": "video_text",
+      "label": "Video Button Text",
+      "default": "Video"
+    },
+    {
+      "type": "text",
+      "id": "photos_text",
+      "label": "Photos Button Text",
+      "default": "Photos"
+    },
+    {
+      "type": "text",
+      "id": "details_text",
+      "label": "Details Button Text",
+      "default": "Details"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "past_event",
+      "name": "Past Event",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Event Image"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            {
+              "value": "Festival",
+              "label": "Festival"
+            },
+            {
+              "value": "Showcase",
+              "label": "Showcase"
+            },
+            {
+              "value": "Themed",
+              "label": "Themed"
+            },
+            {
+              "value": "Workshop",
+              "label": "Workshop"
+            },
+            {
+              "value": "Tournament",
+              "label": "Tournament"
+            }
+          ],
+          "default": "Festival"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "12/15/2023"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Event Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Event description goes here."
+        },
+        {
+          "type": "text",
+          "id": "attendees",
+          "label": "Attendees",
+          "default": "250 attendees"
+        },
+        {
+          "type": "url",
+          "id": "video_link",
+          "label": "Video Link"
+        },
+        {
+          "type": "url",
+          "id": "photos_link",
+          "label": "Photos Link"
+        },
+        {
+          "type": "url",
+          "id": "details_link",
+          "label": "Details Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Past Events",
+      "blocks": [
+        {
+          "type": "past_event",
+          "settings": {
+            "category": "Festival",
+            "date": "12/15/2023",
+            "title": "Winter Game Festival 2023",
+            "description": "Our biggest event of 2023 with over 100 games showcased.",
+            "attendees": "250 attendees"
+          }
+        },
+        {
+          "type": "past_event",
+          "settings": {
+            "category": "Showcase",
+            "date": "11/20/2023",
+            "title": "Indie Game Showcase",
+            "description": "Featuring the latest indie board games from local designers.",
+            "attendees": "35 attendees"
+          }
+        },
+        {
+          "type": "past_event",
+          "settings": {
+            "category": "Themed",
+            "date": "10/31/2023",
+            "title": "Halloween Horror Games",
+            "description": "Spooky games and thrilling experiences for Halloween night.",
+            "attendees": "60 attendees"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
