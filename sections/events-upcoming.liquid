@@ -1,0 +1,627 @@
+{% comment %}
+  Events - Upcoming Events Section
+  Save as: sections/events-upcoming.liquid
+{% endcomment %}
+
+<div class="upcoming-events">
+  <div class="events-container">
+    <h2 class="section-title">{{ section.settings.section_title }}</h2>
+
+    <div class="events-layout">
+      {% for block in section.blocks %}
+        {% if block.settings.is_featured %}
+          <!-- Featured Event -->
+          <div class="featured-event">
+            <div class="featured-image">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | img_url: '800x' }}" 
+                     alt="{{ block.settings.title }}"
+                     width="800"
+                     height="500"
+                     loading="lazy" />
+              {% else %}
+                <div class="image-placeholder">
+                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="featured-content">
+              <span class="featured-badge">Featured Event</span>
+              <h3 class="event-title">{{ block.settings.title }}</h3>
+              <p class="event-description">{{ block.settings.description }}</p>
+
+              <div class="event-details">
+                <div class="detail-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>{{ block.settings.date }}</span>
+                </div>
+
+                <div class="detail-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>{{ block.settings.time }}</span>
+                </div>
+
+                <div class="detail-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>{{ block.settings.location }}</span>
+                </div>
+
+                <div class="detail-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  <span>{{ block.settings.registered }}</span>
+                </div>
+              </div>
+
+              <div class="event-footer">
+                <span class="event-price">{{ block.settings.price }}</span>
+                <a href="{{ block.settings.register_link }}" class="register-btn">
+                  {{ section.settings.register_text }}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      <!-- Regular Events Grid -->
+      <div class="regular-events-grid">
+        {% for block in section.blocks %}
+          {% unless block.settings.is_featured %}
+            <div class="event-card">
+              <div class="event-image">
+                {% if block.settings.image %}
+                  <img src="{{ block.settings.image | img_url: '500x' }}" 
+                       alt="{{ block.settings.title }}"
+                       width="500"
+                       height="300"
+                       loading="lazy" />
+                {% else %}
+                  <div class="image-placeholder-small">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="event-card-content">
+                <div class="event-meta">
+                  <span class="event-category">{{ block.settings.category }}</span>
+                  <span class="event-price-tag">{{ block.settings.price }}</span>
+                </div>
+
+                <h3 class="event-card-title">{{ block.settings.title }}</h3>
+                <p class="event-card-description">{{ block.settings.description | truncate: 80 }}</p>
+
+                <div class="event-card-details">
+                  <div class="detail-item-small">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span>{{ block.settings.date }}</span>
+                  </div>
+
+                  <div class="detail-item-small">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>{{ block.settings.time }}</span>
+                  </div>
+
+                  <div class="detail-item-small">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>{{ block.settings.location }}</span>
+                  </div>
+
+                  <div class="detail-item-small">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>{{ block.settings.registered }}</span>
+                  </div>
+                </div>
+
+                <a href="{{ block.settings.register_link }}" class="register-btn-card">
+                  {{ section.settings.register_text }}
+                </a>
+              </div>
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.upcoming-events {
+  background: #faf9f7;
+  padding: 0 24px 80px;
+}
+
+.events-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 40px 0;
+}
+
+.events-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Featured Event */
+.featured-event {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.featured-image {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background: #f3f4f6;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+.featured-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #fff7ed;
+  color: #ff6b35;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.event-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.event-description {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0 0 28px 0;
+}
+
+.event-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #374151;
+}
+
+.detail-item svg {
+  flex-shrink: 0;
+}
+
+.event-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.event-price {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.register-btn {
+  padding: 14px 32px;
+  background: #ff6b35;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.register-btn:hover {
+  background: #f7931e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+/* Regular Events Grid */
+.regular-events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  background: #f3f4f6;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder-small {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+.event-card-content {
+  padding: 24px;
+}
+
+.event-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.event-category {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.event-price-tag {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.event-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.event-card-description {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.event-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.detail-item-small {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.detail-item-small svg {
+  flex-shrink: 0;
+}
+
+.register-btn-card {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #ff6b35;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.register-btn-card:hover {
+  background: #f7931e;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .regular-events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .featured-event {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-image {
+    min-height: 300px;
+  }
+
+  .event-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .upcoming-events {
+    padding: 0 16px 60px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .featured-content {
+    padding: 28px;
+  }
+
+  .event-title {
+    font-size: 24px;
+  }
+
+  .regular-events-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Upcoming Events",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Upcoming Events"
+    },
+    {
+      "type": "text",
+      "id": "register_text",
+      "label": "Register Button Text",
+      "default": "Register Now"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "event",
+      "name": "Event",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "Featured Event",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Event Image"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Workshop"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Event Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Event description goes here."
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "3/15/2024"
+        },
+        {
+          "type": "text",
+          "id": "time",
+          "label": "Time",
+          "default": "10:00 AM"
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "NewGame Arena, Downtown"
+        },
+        {
+          "type": "text",
+          "id": "registered",
+          "label": "Registered Count",
+          "default": "45/100 registered"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "$25"
+        },
+        {
+          "type": "url",
+          "id": "register_link",
+          "label": "Registration Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Upcoming Events",
+      "blocks": [
+        {
+          "type": "event",
+          "settings": {
+            "is_featured": true,
+            "category": "Championship",
+            "title": "Board Game Championship 2024",
+            "description": "Join us for the ultimate board game championship featuring multiple categories and amazing prizes!",
+            "date": "3/15/2024",
+            "time": "10:00 AM",
+            "location": "NewGame Arena, Downtown",
+            "registered": "45/100 registered",
+            "price": "$25"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "is_featured": false,
+            "category": "Family",
+            "title": "Family Game Night",
+            "description": "A fun evening for families to discover new games and enjoy quality time together.",
+            "date": "3/22/2024",
+            "time": "6:00 PM",
+            "location": "Community Center",
+            "registered": "28/50",
+            "price": "Free"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "is_featured": false,
+            "category": "Workshop",
+            "title": "Strategy Game Workshop",
+            "description": "Learn advanced strategies from expert players in this intensive workshop.",
+            "date": "3/29/2024",
+            "time": "2:00 PM",
+            "location": "NewGame Store",
+            "registered": "12/20",
+            "price": "$15"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "is_featured": false,
+            "category": "Workshop",
+            "title": "Strategy Game Workshop",
+            "description": "Learn advanced strategies from expert players in this intensive workshop.",
+            "date": "3/29/2024",
+            "time": "2:00 PM",
+            "location": "NewGame Store",
+            "registered": "12/20",
+            "price": "$15"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
