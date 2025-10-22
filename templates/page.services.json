@@ -11,13 +11,89 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "services_page_template_zfhfc7": {
+      "type": "Services-Page-Template",
+      "name": "Services Header",
+      "settings": {
+        "title": "Our Services",
+        "subtitle": "From private events to custom game design, we offer comprehensive services to bring board gaming experiences to life."
+      }
+    },
+    "card_services_ekDqEp": {
+      "type": "card-services",
+      "blocks": {
+        "service_NJapni": {
+          "type": "service",
+          "settings": {
+            "icon": "users",
+            "title": "Private Board Game Events",
+            "description": "Host exclusive gaming sessions for your group with our expert game masters and premium game selection.",
+            "price_range": "$200-500",
+            "duration": "2-4 hours",
+            "capacity": "8-30 people",
+            "features": "Professional game master, Premium game selection, Venue setup and cleanup, Refreshments included, Custom game recommendations",
+            "pdf_file": ""
+          }
+        },
+        "service_WeVBe8": {
+          "type": "service",
+          "settings": {
+            "icon": "palette",
+            "title": "Custom Game Design & Printing",
+            "description": "Bring your game ideas to life with our professional design and printing services.",
+            "price_range": "$500-2000",
+            "duration": "2-8 weeks",
+            "capacity": "1-100 copies",
+            "features": "Game concept development, Professional artwork, Prototype creation, Quality printing services",
+            "pdf_file": ""
+          }
+        },
+        "service_rtnHJC": {
+          "type": "service",
+          "settings": {
+            "icon": "briefcase",
+            "title": "Team-Building Activities",
+            "description": "Strengthen your team bonds through strategic board games and collaborative challenges.",
+            "price_range": "$150-400",
+            "duration": "1-3 hours",
+            "capacity": "10-50 people",
+            "features": "Team assessment games, Communication exercises, Problem-solving challenges, Facilitated debriefs",
+            "pdf_file": ""
+          }
+        },
+        "service_qtWMhA": {
+          "type": "service",
+          "settings": {
+            "icon": "gamepad",
+            "title": "Game Rental Service",
+            "description": "Rent premium board games for your events, parties, or extended play sessions.",
+            "price_range": "$10-40/day",
+            "duration": "1-7 days",
+            "capacity": "1-20 games",
+            "features": "Extensive game library, Flexible rental periods, Delivery and pickup, Game instructions included",
+            "pdf_file": ""
+          }
+        }
+      },
+      "block_order": [
+        "service_NJapni",
+        "service_WeVBe8",
+        "service_rtnHJC",
+        "service_qtWMhA"
+      ],
+      "name": "Services Cards",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "services_page_template_zfhfc7",
+    "card_services_ekDqEp"
   ]
 }
