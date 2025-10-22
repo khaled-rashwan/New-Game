@@ -1,0 +1,195 @@
+{% comment %}
+  Homepage - Features Bar
+  Save as: sections/home-features-bar.liquid
+{% endcomment %}
+
+<div class="features-bar">
+  <div class="features-container">
+    {% for block in section.blocks %}
+      <div class="feature-item">
+        <div class="feature-icon">
+          {% if block.settings.icon == 'shield' %}
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          {% elsif block.settings.icon == 'truck' %}
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          {% elsif block.settings.icon == 'rotate' %}
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+          {% elsif block.settings.icon == 'star' %}
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          {% endif %}
+        </div>
+        <div class="feature-text">
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.features-bar {
+  background: white;
+  padding: 32px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: #f9fafb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-text h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+
+.feature-text p {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 992px) {
+  .features-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .features-bar {
+    padding: 24px 16px;
+  }
+
+  .features-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Features Bar",
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "shield",
+              "label": "Shield (Security)"
+            },
+            {
+              "value": "truck",
+              "label": "Truck (Shipping)"
+            },
+            {
+              "value": "rotate",
+              "label": "Rotate (Returns)"
+            },
+            {
+              "value": "star",
+              "label": "Star (Reviews)"
+            }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Secure Shopping"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "SSL Protected"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Bar",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "shield",
+            "title": "Secure Shopping",
+            "description": "SSL Protected"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Shipping",
+            "description": "Orders over $75"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "rotate",
+            "title": "Easy Returns",
+            "description": "30-day policy"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "star",
+            "title": "5-Star Reviews",
+            "description": "1000+ happy customers"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
