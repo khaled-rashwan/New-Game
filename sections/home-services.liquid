@@ -1,0 +1,292 @@
+{% comment %}
+  Homepage - More Than Just Games Section
+  Save as: sections/home-services.liquid
+{% endcomment %}
+
+<div class="home-services">
+  <div class="services-container">
+    <div class="services-header">
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="services-grid">
+      {% for block in section.blocks %}
+        <div class="service-item">
+          <div class="service-icon">
+            {% if block.settings.icon == 'palette' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                <circle cx="13.5" cy="6.5" r=".5"></circle>
+                <circle cx="17.5" cy="10.5" r=".5"></circle>
+                <circle cx="8.5" cy="7.5" r=".5"></circle>
+                <circle cx="6.5" cy="12.5" r=".5"></circle>
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+              </svg>
+            {% elsif block.settings.icon == 'party' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            {% elsif block.settings.icon == 'trophy' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+              </svg>
+            {% elsif block.settings.icon == 'box' %}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="2">
+                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            {% endif %}
+          </div>
+
+          <h3 class="service-title">{{ block.settings.title }}</h3>
+          <p class="service-description">{{ block.settings.description }}</p>
+
+          {% if block.settings.link_text %}
+            <a href="{{ block.settings.link_url }}" class="service-link">
+              {{ block.settings.link_text }}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.home-services {
+  background: white;
+  padding: 80px 24px;
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.service-item {
+  background: #faf9f7;
+  padding: 32px 24px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.service-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background: white;
+}
+
+.service-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.service-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.service-description {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.service-link {
+  display: inline-block;
+  color: #ff6b35;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.service-link:hover {
+  color: #f7931e;
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-services {
+    padding: 60px 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Home Services",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "More Than Just Games"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "From custom game design to unforgettable events, we offer comprehensive gaming services."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "palette",
+              "label": "Palette (Design)"
+            },
+            {
+              "value": "party",
+              "label": "Party (Events)"
+            },
+            {
+              "value": "trophy",
+              "label": "Trophy (Team Building)"
+            },
+            {
+              "value": "box",
+              "label": "Box (Rental)"
+            }
+          ],
+          "default": "palette"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Custom Game Design"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Bring your game ideas to life with our professional design services."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Services",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "icon": "palette",
+            "title": "Custom Game Design",
+            "description": "Bring your game ideas to life with our professional design services.",
+            "link_text": "Learn More"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "party",
+            "title": "Private Events",
+            "description": "Host exclusive gaming sessions with expert game masters.",
+            "link_text": "Learn More"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "trophy",
+            "title": "Team Building",
+            "description": "Strengthen bonds through strategic board game challenges.",
+            "link_text": "Learn More"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "box",
+            "title": "Game Rental",
+            "description": "Rent premium games for your events and parties.",
+            "link_text": "Learn More"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
