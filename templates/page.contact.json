@@ -1,25 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "form": {
-      "type": "contact-form",
+    "about_hero_aXncDe": {
+      "type": "about-hero",
+      "name": "About Hero",
       "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "hero_title": "Get in Touch",
+        "hero_description": "We're here to help! Whether you have questions about games, need\nsupport, or want to share feedback, our team is ready to assist you."
+      }
+    },
+    "about_contact_4Mkcba": {
+      "type": "about-contact",
+      "name": "About Contact",
+      "settings": {
+        "contact_title": "",
+        "contact_subtitle": "",
+        "visit_title": "Visit Our Store",
+        "store_address": "123 Gaming Street\nYour City, State 12345",
+        "call_title": "Call Us",
+        "phone_number": "(555) 123-4567",
+        "phone_hours": "Mon-Fri: 9AM - 6PM EST",
+        "email_title": "Email Us",
+        "email_address": "hello@newgame.com",
+        "email_response": "We'll respond within 24 hours",
+        "show_cta_button": true,
+        "cta_text": "Contact Us Today",
+        "cta_link": ""
       }
     }
   },
   "order": [
     "main",
-    "form"
+    "about_hero_aXncDe",
+    "about_contact_4Mkcba"
   ]
 }
