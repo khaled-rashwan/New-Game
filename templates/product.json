@@ -11,7 +11,35 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {}
+      "settings": {
+        "back_text": "Back to Games",
+        "home_text": "Home",
+        "collections_text": "Games",
+        "sale_badge_text": "Sale",
+        "in_stock_text": "In Stock",
+        "out_stock_text": "Out of Stock",
+        "reviews_text": "reviews",
+        "players_text": "Players",
+        "playtime_text": "Play Time",
+        "complexity_text": "Complexity",
+        "save_text": "Save",
+        "add_to_cart_text": "Add to Cart",
+        "sold_out_text": "Sold Out",
+        "feature_1": "Free shipping on orders over $75",
+        "feature_2": "30-day return policy",
+        "feature_3": "Secure payment processing",
+        "tab_description": "Description",
+        "tab_specifications": "Specifications",
+        "tab_components": "Components{{ product.metafields.custom.specifications.value }}",
+        "tab_reviews": "Reviews",
+        "about_title": "About This Game",
+        "features_title": "Key Features{{ product.metafields.custom.features.value }}",
+        "no_specifications": "No specifications available.",
+        "no_components": "No components information available.{{ product.metafields.custom.components.value }}",
+        "reviews_coming_soon": "Reviews coming soon!",
+        "show_related_products": true,
+        "related_title": "You Might Also Like"
+      }
     },
     "product-recommendations": {
       "type": "product-recommendations",
