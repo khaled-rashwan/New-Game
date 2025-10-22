@@ -11,15 +11,48 @@
   "sections": {
     "events_header": {
       "type": "events-header",
-      "settings": {}
+      "settings": {
+        "title": "NewGame Events",
+        "subtitle": "Join our community events, tournaments, and workshops. From casual family nights to competitive championships!"
+      }
     },
     "upcoming_events": {
       "type": "events-upcoming",
-      "settings": {}
+      "blocks": {
+        "event_hGUUVj": {
+          "type": "event",
+          "settings": {
+            "is_featured": true,
+            "category": "Workshop",
+            "title": "Board Game Championship 2024",
+            "description": "Join us for the ultimate board game championship featuring multiple\ncategories and amazing prizes!",
+            "date": "3/15/2024",
+            "time": "10:00 AM",
+            "location": "NewGame Arena, Downtown",
+            "registered": "45/100 registered",
+            "price": "$25",
+            "register_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "event_hGUUVj"
+      ],
+      "settings": {
+        "section_title": "Upcoming Events",
+        "register_text": "Register Now"
+      }
     },
     "past_events": {
       "type": "events-past",
-      "settings": {}
+      "settings": {
+        "section_title": "Past Events",
+        "search_placeholder": "Search past events...",
+        "filter_all_text": "All Categories",
+        "video_text": "Video",
+        "photos_text": "Photos",
+        "details_text": "Details"
+      }
     }
   },
   "order": [
