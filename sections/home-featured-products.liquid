@@ -1,0 +1,500 @@
+{% comment %}
+  Homepage - Featured Products Section
+  Save as: sections/home-featured-products.liquid
+{% endcomment %}
+
+<div class="featured-products">
+  <div class="featured-container">
+    <div class="section-header">
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="products-grid">
+      {% assign collection = collections[section.settings.collection] %}
+      {% for product in collection.products limit: section.settings.products_to_show %}
+        <div class="product-card-home">
+          <!-- Badges -->
+          <div class="product-badges-home">
+            {% if product.compare_at_price > product.price %}
+              <span class="badge-sale-home">Sale</span>
+            {% endif %}
+            {% if product.tags contains 'new' or product.tags contains 'New' %}
+              <span class="badge-new-home">New</span>
+            {% endif %}
+          </div>
+
+          <!-- Wishlist -->
+          <button class="wishlist-btn-home" onclick="toggleWishlist({{ product.id }})">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </button>
+
+          <!-- Image -->
+          <a href="{{ product.url }}" class="product-link-home">
+            <div class="product-image-home">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | img_url: '500x' }}" 
+                     alt="{{ product.title }}"
+                     width="500"
+                     height="500"
+                     loading="lazy" />
+              {% else %}
+                <div class="placeholder-home"></div>
+              {% endif %}
+            </div>
+          </a>
+
+          <!-- Info -->
+          <div class="product-info-home">
+            <div class="product-meta-home">
+              {% assign first_tag = product.tags | first %}
+              <span class="product-category-home">{{ first_tag }}</span>
+              <div class="product-rating-home">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFC107" stroke="none">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>{{ product.metafields.custom.rating | default: 4.7 }}</span>
+              </div>
+            </div>
+
+            <h3 class="product-title-home">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </h3>
+
+            <div class="product-specs-home">
+              <span class="spec-home">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                {{ product.metafields.custom.players | default: '2-4' }}
+              </span>
+              <span class="spec-home">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                {{ product.metafields.custom.playtime | default: '60 min' }}
+              </span>
+            </div>
+
+            <div class="product-price-home">
+              {% if product.compare_at_price > product.price %}
+                <span class="price-current-home">{{ product.price | money }}</span>
+                <span class="price-original-home">{{ product.compare_at_price | money }}</span>
+              {% else %}
+                <span class="price-current-home">{{ product.price | money }}</span>
+              {% endif %}
+            </div>
+
+            <button class="add-to-cart-home" onclick="addToCart({{ product.variants.first.id }})">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_view_all %}
+      <div class="view-all-section">
+        <a href="{{ section.settings.view_all_link }}" class="view-all-btn">
+          {{ section.settings.view_all_text }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.featured-products {
+  background: #faf9f7;
+  padding: 80px 24px;
+}
+
+.featured-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.product-card-home {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.product-card-home:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.product-badges-home {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+}
+
+.badge-sale-home {
+  padding: 5px 10px;
+  background: #ef4444;
+  color: white;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-new-home {
+  padding: 5px 10px;
+  background: #10b981;
+  color: white;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.wishlist-btn-home {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.wishlist-btn-home:hover {
+  background: #fef2f2;
+  transform: scale(1.05);
+}
+
+.wishlist-btn-home.active svg {
+  fill: #ef4444;
+  stroke: #ef4444;
+}
+
+.product-link-home {
+  display: block;
+}
+
+.product-image-home {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #f3f4f6;
+  overflow: hidden;
+}
+
+.product-image-home img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card-home:hover .product-image-home img {
+  transform: scale(1.05);
+}
+
+.placeholder-home {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+.product-info-home {
+  padding: 16px;
+}
+
+.product-meta-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.product-category-home {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: capitalize;
+}
+
+.product-rating-home {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.product-title-home {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+
+.product-title-home a {
+  color: #111827;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.product-title-home a:hover {
+  color: #ff6b35;
+}
+
+.product-specs-home {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.spec-home {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.product-price-home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.price-current-home {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.price-original-home {
+  font-size: 14px;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.add-to-cart-home {
+  width: 100%;
+  padding: 11px;
+  background: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.add-to-cart-home:hover {
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.view-all-section {
+  text-align: center;
+}
+
+.view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: white;
+  color: #374151;
+  text-decoration: none;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.view-all-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-products {
+    padding: 60px 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+function toggleWishlist(productId) {
+  const btn = event.currentTarget;
+  btn.classList.toggle('active');
+  
+  let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const index = wishlist.indexOf(productId);
+  
+  if (index > -1) {
+    wishlist.splice(index, 1);
+  } else {
+    wishlist.push(productId);
+  }
+  
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+function addToCart(variantId) {
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: variantId,
+      quantity: 1
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert('Product added to cart!');
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error adding to cart.');
+  });
+}
+</script>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Games"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Handpicked favorites that bring friends and families together for unforgettable gaming experiences."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to Show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All Games"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}
