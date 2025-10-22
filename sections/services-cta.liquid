@@ -1,0 +1,231 @@
+{% comment %}
+  Services CTA Section
+  Save as: sections/services-cta.liquid
+{% endcomment %}
+
+<div class="services-cta">
+  <div class="cta-container">
+    <h2 class="cta-title">{{ section.settings.title }}</h2>
+    <p class="cta-description">{{ section.settings.description }}</p>
+
+    <div class="cta-buttons">
+      {% if section.settings.show_quote_button %}
+        <a href="{{ section.settings.quote_link }}" class="cta-btn primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+            <path d="M12 8v13"></path>
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
+            <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path>
+          </svg>
+          {{ section.settings.quote_text }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.show_phone_button %}
+        <a href="tel:{{ section.settings.phone_number | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}" class="cta-btn secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          {{ section.settings.phone_text }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.show_email_button %}
+        <a href="mailto:{{ section.settings.email_address }}" class="cta-btn secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          {{ section.settings.email_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.services-cta {
+  background: white;
+  padding: 80px 24px;
+}
+
+.cta-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.cta-description {
+  font-size: 18px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0 0 40px 0;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.cta-btn.primary {
+  background: #ff6b35;
+  color: white;
+  border: 2px solid #ff6b35;
+}
+
+.cta-btn.primary:hover {
+  background: #f7931e;
+  border-color: #f7931e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+.cta-btn.secondary {
+  background: white;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.cta-btn.secondary:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+@media (max-width: 768px) {
+  .services-cta {
+    padding: 60px 20px;
+  }
+
+  .cta-title {
+    font-size: 28px;
+  }
+
+  .cta-description {
+    font-size: 16px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Services CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Ready to Get Started?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Contact us today to discuss your gaming needs and get a custom quote."
+    },
+    {
+      "type": "header",
+      "content": "Request Quote Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quote_button",
+      "label": "Show Request Quote Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "quote_text",
+      "label": "Button Text",
+      "default": "Request Quote"
+    },
+    {
+      "type": "url",
+      "id": "quote_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Phone Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone_button",
+      "label": "Show Phone Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_text",
+      "label": "Button Text",
+      "default": "Call (555) 123-4567"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone Number",
+      "default": "(555) 123-4567"
+    },
+    {
+      "type": "header",
+      "content": "Email Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email_button",
+      "label": "Show Email Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "email_text",
+      "label": "Button Text",
+      "default": "Email Us"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email Address",
+      "default": "hello@newgame.com"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services CTA"
+    }
+  ]
+}
+{% endschema %}
