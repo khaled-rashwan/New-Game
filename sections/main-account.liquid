@@ -1,163 +1,1301 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  Custom Account Dashboard Template
+  Shows: Welcome message, stats, quick actions, recent orders, recent activity
+  All content editable from Shopify theme customizer
+{% endcomment %}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+<style>
+  .account-dashboard {
+    max-width: {{ section.settings.container_width }}px;
+    margin: 0 auto;
+    padding: {{ section.settings.section_padding }}px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+  /* Welcome Section */
+  .welcome-card {
+    background: {{ section.settings.card_background }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: {{ section.settings.card_radius }}px;
+    padding: {{ section.settings.card_padding }}px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .user-avatar {
+    width: {{ section.settings.avatar_size }}px;
+    height: {{ section.settings.avatar_size }}px;
+    border-radius: 50%;
+    background: {{ section.settings.avatar_background }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc({{ section.settings.avatar_size }}px * 0.4);
+    font-weight: 600;
+    color: {{ section.settings.avatar_text_color }};
+    flex-shrink: 0;
+  }
+
+  .user-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-info h1 {
+    font-size: {{ section.settings.welcome_heading_size }}px;
+    font-weight: 700;
+    margin: 0 0 5px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .user-email {
+    font-size: {{ section.settings.email_size }}px;
+    color: {{ section.settings.text_secondary }};
+    margin: 0 0 8px;
+  }
+
+  .user-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: {{ section.settings.badge_size }}px;
+    font-weight: 600;
+  }
+
+  .badge-gold {
+    background: {{ section.settings.gold_badge_bg }};
+    color: {{ section.settings.gold_badge_text }};
+  }
+
+  .badge-member {
+    background: transparent;
+    color: {{ section.settings.text_secondary }};
+    font-weight: 500;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .stat-card {
+    background: {{ section.settings.card_background }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: {{ section.settings.card_radius }}px;
+    padding: {{ section.settings.card_padding }}px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-info h3 {
+    font-size: {{ section.settings.stat_label_size }}px;
+    color: {{ section.settings.text_secondary }};
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-size: {{ section.settings.stat_value_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .stat-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .icon-blue { background: #e3f2fd; color: #1976d2; }
+  .icon-green { background: #e8f5e9; color: #388e3c; }
+  .icon-yellow { background: #fff8e1; color: #f57c00; }
+  .icon-red { background: #ffebee; color: #d32f2f; }
+
+  /* Quick Actions */
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: {{ section.settings.section_title_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 5px;
+  }
+
+  .section-subtitle {
+    font-size: {{ section.settings.section_subtitle_size }}px;
+    color: {{ section.settings.text_secondary }};
+    margin: 0;
+  }
+
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .action-card {
+    background: {{ section.settings.card_background }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: {{ section.settings.card_radius }}px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .action-card:hover {
+    border-color: {{ section.settings.primary_color }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .action-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .action-content h4 {
+    font-size: {{ section.settings.action_title_size }}px;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 4px;
+  }
+
+  .action-content p {
+    font-size: {{ section.settings.action_desc_size }}px;
+    color: {{ section.settings.text_secondary }};
+    margin: 0;
+  }
+
+  /* Recent Orders */
+  .orders-section {
+    background: {{ section.settings.card_background }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: {{ section.settings.card_radius }}px;
+    padding: {{ section.settings.card_padding }}px;
+    margin-bottom: 30px;
+  }
+
+  .section-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .view-all-btn {
+    background: transparent;
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: {{ section.settings.button_size }}px;
+    color: {{ section.settings.text_color }};
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .view-all-btn:hover {
+    border-color: {{ section.settings.primary_color }};
+    color: {{ section.settings.primary_color }};
+  }
+
+  .order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid {{ section.settings.card_border }};
+  }
+
+  .order-item:last-child {
+    border-bottom: none;
+  }
+
+  .order-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+  }
+
+  .order-icon {
+    width: 40px;
+    height: 40px;
+    background: #e3f2fd;
+    color: #1976d2;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .order-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .order-details h5 {
+    font-size: {{ section.settings.order_title_size }}px;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 4px;
+  }
+
+  .order-details p {
+    font-size: {{ section.settings.order_subtitle_size }}px;
+    color: {{ section.settings.text_secondary }};
+    margin: 0;
+  }
+
+  .order-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .order-price {
+    font-size: {{ section.settings.order_price_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+  }
+
+  .order-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: {{ section.settings.status_size }}px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .status-delivered {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .status-shipped {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+
+  .status-processing {
+    background: #fff8e1;
+    color: #f57c00;
+  }
+
+  /* Recent Activity */
+  .activity-section {
+    background: {{ section.settings.card_background }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: {{ section.settings.card_radius }}px;
+    padding: {{ section.settings.card_padding }}px;
+  }
+
+  .activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 16px 0;
+    border-bottom: 1px solid {{ section.settings.card_border }};
+  }
+
+  .activity-item:last-child {
+    border-bottom: none;
+  }
+
+  .activity-icon {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .activity-icon svg {
+    width: 20px;
+    height: 20px;
+    color: {{ section.settings.text_secondary }};
+  }
+
+  .activity-content {
+    flex: 1;
+  }
+
+  .activity-content h5 {
+    font-size: {{ section.settings.activity_title_size }}px;
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 4px;
+  }
+
+  .activity-time {
+    font-size: {{ section.settings.activity_time_size }}px;
+    color: {{ section.settings.text_secondary }};
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: {{ section.settings.text_secondary }};
+  }
+
+  .empty-state svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .actions-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .welcome-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .order-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .order-right {
+      width: 100%;
+      justify-content: space-between;
     }
   }
-{%- endstyle -%}
 
-<div class="customer account section-{{ section.id }}-padding">
-  <div>
-    <h1 class="customer__title">{{ 'customer.account.title' | t }}</h1>
-    <a href="{{ routes.account_logout_url }}">
-      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="none" viewBox="0 0 18 19">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M6 4.5a3 3 0 116 0 3 3 0 01-6 0zm3-4a4 4 0 100 8 4 4 0 000-8zm5.58 12.15c1.12.82 1.83 2.24 1.91 4.85H1.51c.08-2.6.79-4.03 1.9-4.85C4.66 11.75 6.5 11.5 9 11.5s4.35.26 5.58 1.15zM9 10.5c-2.5 0-4.65.24-6.17 1.35C1.27 12.98.5 14.93.5 18v.5h17V18c0-3.07-.77-5.02-2.33-6.15-1.52-1.1-3.67-1.35-6.17-1.35z" fill="currentColor">
-      </svg>
-      {{ 'customer.log_out' | t }}
-    </a>
-  </div>
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 
-  <div>
-    <div>
-      <h2>{{ 'customer.orders.title' | t }}</h2>
-
-      {% paginate customer.orders by 20 %}
-        {%- if customer.orders.size > 0 -%}
-          <table role="table" class="order-history">
-            <caption class="visually-hidden">{{ 'customer.orders.title' | t }}</caption>
-            <thead role="rowgroup">
-              <tr role="row">
-                <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
-                <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
-                <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
-                <th id="ColumnFulfillment" scope="col" role="columnheader">{{ 'customer.orders.fulfillment_status' | t }}</th>
-                <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
-              </tr>
-            </thead>
-            <tbody role="rowgroup">
-              {%- for order in customer.orders -%}
-                <tr role="row">
-                  <td
-                    id="RowOrder"
-                    role="cell"
-                    headers="ColumnOrder"
-                    data-label="{{ 'customer.orders.order_number' | t }}"
-                  >
-                    <a href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">
-                      {{ order.name }}
-                    </a>
-                  </td>
-                  <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
-                    {{ order.created_at | time_tag: format: 'date' }}
-                  </td>
-                  <td headers="RowOrder ColumnPayment" role="cell" data-label="{{ 'customer.orders.payment_status' | t }}">
-                    {{ order.financial_status_label }}
-                  </td>
-                  <td headers="RowOrder ColumnFulfillment" role="cell" data-label="{{ 'customer.orders.fulfillment_status' | t }}">
-                    {{ order.fulfillment_status_label }}
-                  </td>
-                  <td headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
-                    {{ order.total_price | money_with_currency }}</td>
-                </tr>
-              {%- endfor -%}
-            </tbody>
-          </table>
-        {%- else -%}
-          <p>{{ 'customer.orders.none' | t }}</p>
-        {%- endif -%}
-
-        {%- if paginate.pages > 1 -%}
-          {%- if paginate.parts.size > 0 -%}
-              <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-                <ul role="list">
-                {%- if paginate.previous -%}
-                  <li>
-                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
-                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
-                {%- endif -%}
-
-                {%- for part in paginate.parts -%}
-                  <li>
-                    {%- if part.is_link -%}
-                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
-                    {%- else -%}
-                      {%- if part.title == paginate.current_page -%}
-                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</span>
-                      {%- else -%}
-                        <span>{{ part.title }}</span>
-                      {%- endif -%}
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-
-                {%- if paginate.next -%}
-                  <li>
-                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}" >
-                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
-                {%- endif -%}
-                </ul>
-              </nav>
-          {%- endif -%}
-        {%- endif -%}
-      {% endpaginate %}
+<div class="account-dashboard">
+  {% if customer %}
+    <!-- Welcome Card -->
+    <div class="welcome-card">
+      <div class="user-avatar">
+        {% if customer.name %}
+          {{ customer.name | slice: 0 | upcase }}{{ customer.last_name | slice: 0 | upcase }}
+        {% else %}
+          {{ customer.email | slice: 0 | upcase }}
+        {% endif %}
+      </div>
+      <div class="user-info">
+        <h1>{{ section.settings.welcome_text }} {{ customer.first_name | default: customer.email }}!</h1>
+        <p class="user-email">{{ customer.email }}</p>
+        <div class="user-badges">
+          {% if section.settings.show_membership_badge %}
+          <span class="badge badge-gold">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/>
+            </svg>
+            {{ section.settings.membership_badge_text }}
+          </span>
+          {% endif %}
+          <span class="badge badge-member">
+            {{ section.settings.member_since_text }} {{ customer.created_at | date: "%B %Y" }}
+          </span>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <h2>{{ 'customer.account.details' | t }}</h2>
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <!-- Total Orders -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>{{ section.settings.orders_label }}</h3>
+          <p class="stat-value">{{ customer.orders_count }}</p>
+        </div>
+        <div class="stat-icon icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          </svg>
+        </div>
+      </div>
 
-      {{ customer.default_address | format_address }}
+      <!-- Total Spent -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>{{ section.settings.spent_label }}</h3>
+          <p class="stat-value">{{ customer.total_spent | money }}</p>
+        </div>
+        <div class="stat-icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+        </div>
+      </div>
 
-      <a href="{{ routes.account_addresses_url }}">
-        {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
-      </a>
+      <!-- Loyalty Points (Static) -->
+      {% if section.settings.show_loyalty_points %}
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>{{ section.settings.loyalty_label }}</h3>
+          <p class="stat-value">{{ section.settings.loyalty_points }}</p>
+        </div>
+        <div class="stat-icon icon-yellow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Wishlist Items (if enabled) -->
+      {% if section.settings.show_wishlist_count %}
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>{{ section.settings.wishlist_label }}</h3>
+          <p class="stat-value">{{ section.settings.wishlist_count }}</p>
+        </div>
+        <div class="stat-icon icon-red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+      </div>
+      {% endif %}
     </div>
 
-  </div>
+    <!-- Quick Actions -->
+    <div class="section-header">
+      <h2 class="section-title">{{ section.settings.actions_title }}</h2>
+      <p class="section-subtitle">{{ section.settings.actions_subtitle }}</p>
+    </div>
+
+    <div class="actions-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'action_card' %}
+        <a href="{{ block.settings.action_url }}" class="action-card" {{ block.shopify_attributes }}>
+          <div class="action-icon" style="background: {{ block.settings.icon_bg }}; color: {{ block.settings.icon_color }};">
+            {% if block.settings.icon == 'user' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            {% elsif block.settings.icon == 'orders' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            {% elsif block.settings.icon == 'heart' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            {% elsif block.settings.icon == 'calendar' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            {% elsif block.settings.icon == 'location' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            {% elsif block.settings.icon == 'settings' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v6m0 6v6m-6-9h6m6 0h6m-9-6 4.24 4.24m-8.48 0L7.76 7.76m8.48 8.48L12 20.49m-4.24-4.25L3.51 20.49"></path>
+              </svg>
+            {% endif %}
+          </div>
+          <div class="action-content">
+            <h4>{{ block.settings.action_title }}</h4>
+            <p>{{ block.settings.action_description }}</p>
+          </div>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Recent Orders -->
+    {% if section.settings.show_recent_orders %}
+    <div class="orders-section">
+      <div class="section-header-row">
+        <div class="section-header">
+          <h2 class="section-title">{{ section.settings.orders_title }}</h2>
+          <p class="section-subtitle">{{ section.settings.orders_subtitle }}</p>
+        </div>
+        <a href="/account/orders" class="view-all-btn">{{ section.settings.view_all_text }}</a>
+      </div>
+
+      {% if customer.orders.size > 0 %}
+        {% for order in customer.orders limit: 3 %}
+        <div class="order-item">
+          <div class="order-left">
+            <div class="order-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+            <div class="order-details">
+              <h5>{{ order.name }}</h5>
+              <p>{{ order.line_items.first.title }}{% if order.line_items.size > 1 %}, +{{ order.line_items.size | minus: 1 }} more{% endif %}</p>
+              <p>{{ order.created_at | date: "%Y-%m-%d" }}</p>
+            </div>
+          </div>
+          <div class="order-right">
+            <span class="order-price">{{ order.total_price | money }}</span>
+            <span class="order-status status-{{ order.financial_status }}">
+              {{ order.fulfillment_status | default: order.financial_status | capitalize }}
+            </span>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <p>{{ section.settings.no_orders_text }}</p>
+        </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Recent Activity -->
+    {% if section.settings.show_recent_activity %}
+    <div class="activity-section">
+      <div class="section-header">
+        <h2 class="section-title">{{ section.settings.activity_title }}</h2>
+        <p class="section-subtitle">{{ section.settings.activity_subtitle }}</p>
+      </div>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'activity_item' %}
+        <div class="activity-item" {{ block.shopify_attributes }}>
+          <div class="activity-icon">
+            {% if block.settings.activity_icon == 'package' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            {% elsif block.settings.activity_icon == 'heart' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            {% elsif block.settings.activity_icon == 'star' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/>
+              </svg>
+            {% elsif block.settings.activity_icon == 'calendar' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            {% endif %}
+          </div>
+          <div class="activity-content">
+            <h5>{{ block.settings.activity_text }}</h5>
+            <p class="activity-time">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              {{ block.settings.activity_time }}
+            </p>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  {% else %}
+    <!-- Not logged in -->
+    <div class="empty-state">
+      <h2>Please log in to view your account</h2>
+      <p><a href="/account/login">Login here</a></p>
+    </div>
+  {% endif %}
 </div>
 
 {% schema %}
 {
-  "name": "t:sections.main-account.name",
+  "name": "Account Dashboard",
   "settings": [
     {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Layout"
     },
     {
       "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
+      "id": "container_width",
+      "min": 1000,
+      "max": 1400,
+      "step": 50,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "label": "Container Width",
+      "default": 1200
     },
     {
       "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
+      "id": "section_padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "label": "Section Padding",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card Border",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_secondary",
+      "label": "Secondary Text Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#1976d2"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Padding",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Welcome Section"
+    },
+    {
+      "type": "text",
+      "id": "welcome_text",
+      "label": "Welcome Text",
+      "default": "Welcome back,"
+    },
+    {
+      "type": "range",
+      "id": "welcome_heading_size",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "email_size",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Email Size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "avatar_size",
+      "min": 60,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Avatar Size",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "avatar_background",
+      "label": "Avatar Background",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "avatar_text_color",
+      "label": "Avatar Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_membership_badge",
+      "label": "Show Membership Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "membership_badge_text",
+      "label": "Membership Badge Text",
+      "default": "Gold Member"
+    },
+    {
+      "type": "color",
+      "id": "gold_badge_bg",
+      "label": "Gold Badge Background",
+      "default": "#fef3c7"
+    },
+    {
+      "type": "color",
+      "id": "gold_badge_text",
+      "label": "Gold Badge Text",
+      "default": "#92400e"
+    },
+    {
+      "type": "range",
+      "id": "badge_size",
+      "min": 11,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge Font Size",
+      "default": 13
+    },
+    {
+      "type": "text",
+      "id": "member_since_text",
+      "label": "Member Since Text",
+      "default": "Member since"
+    },
+    {
+      "type": "header",
+      "content": "Stats Section"
+    },
+    {
+      "type": "text",
+      "id": "orders_label",
+      "label": "Orders Label",
+      "default": "Total Orders"
+    },
+    {
+      "type": "text",
+      "id": "spent_label",
+      "label": "Spent Label",
+      "default": "Total Spent"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_loyalty_points",
+      "label": "Show Loyalty Points",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "loyalty_label",
+      "label": "Loyalty Points Label",
+      "default": "Loyalty Points"
+    },
+    {
+      "type": "text",
+      "id": "loyalty_points",
+      "label": "Loyalty Points Value",
+      "default": "3,420",
+      "info": "Static value - update manually"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist_count",
+      "label": "Show Wishlist Count",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "wishlist_label",
+      "label": "Wishlist Label",
+      "default": "Wishlist Items"
+    },
+    {
+      "type": "text",
+      "id": "wishlist_count",
+      "label": "Wishlist Count",
+      "default": "12",
+      "info": "Static value - update manually"
+    },
+    {
+      "type": "range",
+      "id": "stat_label_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Stat Label Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "stat_value_size",
+      "min": 20,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Stat Value Size",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Quick Actions"
+    },
+    {
+      "type": "text",
+      "id": "actions_title",
+      "label": "Actions Title",
+      "default": "Quick Actions"
+    },
+    {
+      "type": "text",
+      "id": "actions_subtitle",
+      "label": "Actions Subtitle",
+      "default": "Access your account sections"
+    },
+    {
+      "type": "range",
+      "id": "section_title_size",
+      "min": 18,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Section Title Size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_subtitle_size",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Section Subtitle Size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "action_title_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Action Card Title Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "action_desc_size",
+      "min": 12,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Action Card Description Size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Recent Orders"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recent_orders",
+      "label": "Show Recent Orders",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "orders_title",
+      "label": "Orders Title",
+      "default": "Recent Orders"
+    },
+    {
+      "type": "text",
+      "id": "orders_subtitle",
+      "label": "Orders Subtitle",
+      "default": "Your latest purchases"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All Orders"
+    },
+    {
+      "type": "text",
+      "id": "no_orders_text",
+      "label": "No Orders Text",
+      "default": "You haven't placed any orders yet"
+    },
+    {
+      "type": "range",
+      "id": "order_title_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Order Title Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "order_subtitle_size",
+      "min": 12,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Order Subtitle Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "order_price_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Order Price Size",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "status_size",
+      "min": 11,
+      "max": 15,
+      "step": 1,
+      "unit": "px",
+      "label": "Status Badge Size",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "min": 13,
+      "max": 17,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Recent Activity"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recent_activity",
+      "label": "Show Recent Activity",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "activity_title",
+      "label": "Activity Title",
+      "default": "Recent Activity"
+    },
+    {
+      "type": "text",
+      "id": "activity_subtitle",
+      "label": "Activity Subtitle",
+      "default": "Your latest account activity"
+    },
+    {
+      "type": "range",
+      "id": "activity_title_size",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Activity Title Size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "activity_time_size",
+      "min": 12,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Activity Time Size",
+      "default": 13
+    }
+  ],
+  "blocks": [
+    {
+      "type": "action_card",
+      "name": "Action Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "action_title",
+          "label": "Title",
+          "default": "Personal Info"
+        },
+        {
+          "type": "text",
+          "id": "action_description",
+          "label": "Description",
+          "default": "Update your personal details"
+        },
+        {
+          "type": "url",
+          "id": "action_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "user", "label": "User" },
+            { "value": "orders", "label": "Orders" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "calendar", "label": "Calendar" },
+            { "value": "location", "label": "Location" },
+            { "value": "settings", "label": "Settings" }
+          ],
+          "default": "user"
+        },
+        {
+          "type": "color",
+          "id": "icon_bg",
+          "label": "Icon Background",
+          "default": "#ede9fe"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#7c3aed"
+        }
+      ]
+    },
+    {
+      "type": "activity_item",
+      "name": "Activity Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "activity_text",
+          "label": "Activity Text",
+          "default": "Order #ORD-001 was delivered"
+        },
+        {
+          "type": "text",
+          "id": "activity_time",
+          "label": "Time Ago",
+          "default": "2 hours ago"
+        },
+        {
+          "type": "select",
+          "id": "activity_icon",
+          "label": "Icon",
+          "options": [
+            { "value": "package", "label": "Package" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "star", "label": "Star" },
+            { "value": "calendar", "label": "Calendar" }
+          ],
+          "default": "package"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Account Dashboard",
+      "blocks": [
+        {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Personal Info",
+            "action_description": "Update your personal details",
+            "action_url": "/account",
+            "icon": "user",
+            "icon_bg": "#ede9fe",
+            "icon_color": "#7c3aed"
+          }
+        },
+        {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Orders",
+            "action_description": "View and track your orders",
+            "action_url": "/account/orders",
+            "icon": "orders",
+            "icon_bg": "#d1fae5",
+            "icon_color": "#059669"
+          }
+        },
+        {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Wishlist",
+            "action_description": "Your saved games and items",
+            "action_url": "/pages/wishlist",
+            "icon": "heart",
+            "icon_bg": "#ffebee",
+            "icon_color": "#d32f2f"
+          }
+        },
+        {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Events",
+            "action_description": "Gaming events and tournaments",
+            "action_url": "/pages/events",
+            "icon": "calendar",
+            "icon_bg": "#fff8e1",
+            "icon_color": "#f57c00"
+          }
+        },
+        {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Addresses",
+            "action_description": "Manage shipping addresses",
+            "action_url": "/account/addresses",
+            "icon": "location",
+            "icon_bg": "#e1f5fe",
+            "icon_color": "#0288d1"
+          }
+        },
+        {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Settings",
+            "action_description": "Notification and gaming preferences",
+            "action_url": "/account",
+            "icon": "settings",
+            "icon_bg": "#f5f5f5",
+            "icon_color": "#616161"
+          }
+        },
+        {
+          "type": "activity_item",
+          "settings": {
+            "activity_text": "Order #ORD-001 was delivered",
+            "activity_time": "2 hours ago",
+            "activity_icon": "package"
+          }
+        },
+        {
+          "type": "activity_item",
+          "settings": {
+            "activity_text": "Added Gloomhaven to wishlist",
+            "activity_time": "1 day ago",
+            "activity_icon": "heart"
+          }
+        },
+        {
+          "type": "activity_item",
+          "settings": {
+            "activity_text": "Reviewed Catan - 5 stars",
+            "activity_time": "3 days ago",
+            "activity_icon": "star"
+          }
+        },
+        {
+          "type": "activity_item",
+          "settings": {
+            "activity_text": "Registered for Board Game Night",
+            "activity_time": "1 week ago",
+            "activity_icon": "calendar"
+          }
+        }
+      ]
     }
   ]
 }
