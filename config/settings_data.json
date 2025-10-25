@@ -34,7 +34,6 @@
         "type": "header",
         "settings": {
           "color_scheme": "background-1",
-          "logo": "shopify://shop_images/73542b279f7f4ac3f8146ed85870df7735521010.png",
           "logo_width": 70,
           "logo_position": "middle-left",
           "menu": "main-menu",
@@ -71,67 +70,34 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "footer-0": {
-            "type": "menu",
-            "settings": {
-              "menu_title": "",
-              "menu_handle": "footer"
-            }
-          },
-          "footer-1": {
-            "type": "menu",
-            "settings": {
-              "menu_title": "",
-              "menu_handle": "footer"
-            }
-          },
-          "footer-2": {
-            "type": "menu",
-            "settings": {
-              "menu_title": "",
-              "menu_handle": "footer"
-            }
-          },
-          "footer-3": {
-            "type": "menu",
-            "settings": {
-              "menu_title": "",
-              "menu_handle": "footer"
-            }
-          }
-        },
-        "block_order": [
-          "footer-0",
-          "footer-1",
-          "footer-2",
-          "footer-3"
-        ],
         "settings": {
-          "newsletter_title": "Stay in the Game!",
-          "newsletter_subtitle": "Get the latest news, exclusive offers, and early access to new games delivered to your inbox.",
-          "newsletter_placeholder": "Enter your email",
-          "newsletter_button_text": "Subscribe",
-          "newsletter_unsubscribe_text": "No spam, unsubscribe at any time. We respect your privacy.",
-          "newsletter_action_url": "",
-          "logo_text": "NewGame",
-          "logo_subtext": "Board Game Store",
-          "logo_description": "Your premier destination for board games, accessories, and unforgettable gaming experiences. From casual family fun to competitive tournaments, we bring people together through the joy of gaming.",
-          "contact_phone": "(555) 123-4567",
-          "contact_email": "hello@newgame.com",
-          "contact_address": "123 Game Street, Board City, BC 12345",
+          "background_color": "#0c4a5f",
+          "text_color": "#ffffff",
+          "button_color": "#ff6b35",
+          "button_text_color": "#ffffff",
+          "show_newsletter": true,
+          "newsletter_heading": "Stay in the Game!",
+          "newsletter_text": "Get the latest news, exclusive offers, and early access to new games delivered to your inbox.",
+          "email_placeholder": "Enter your email",
+          "button_text": "Subscribe",
+          "privacy_text": "No spam, unsubscribe at any time. We respect your privacy.",
+          "success_message": "Thanks for subscribing!",
+          "logo": "shopify://shop_images/73542b279f7f4ac3f8146ed85870df7735521010.png",
+          "brand_name": "NewGame",
+          "brand_tagline": "Board Game Store",
+          "brand_description": "Your premier destination for board games, accessories, and unforgettable gaming experiences. From casual family fun to competitive tournaments, we bring people together through the joy of gaming.",
+          "phone": "(555) 123-4567",
+          "email": "hello@newgame.com",
+          "address": "123 Game Street, Board City, BC 12345",
           "copyright_text": "© 2024 NewGame. All rights reserved.",
-          "privacy_policy_url": "",
-          "terms_of_service_url": "",
-          "cookie_policy_url": "",
-          "social_facebook_url": "",
-          "social_twitter_url": "",
-          "social_instagram_url": "",
-          "social_youtube_url": "",
-          "feature1_text": "SSL Secure",
-          "feature2_text": "Free Shipping $75+",
-          "feature3_text": "30-Day Returns",
-          "feature4_text": "Customer Support"
+          "privacy_policy_link": "#",
+          "terms_link": "#",
+          "cookie_policy_link": "#",
+          "facebook_url": "#",
+          "twitter_url": "#",
+          "instagram_url": "#",
+          "youtube_url": "#",
+          "show_trust_badges": true
         }
       }
     },
