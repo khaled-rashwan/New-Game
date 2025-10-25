@@ -1,361 +1,578 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% comment %}
+  Custom Footer Section - NewGame Board Game Store
+  All content is editable from the Shopify theme customizer
+{% endcomment %}
 
 <style>
-  .new-footer {
-    background-color: #0e3e4a;
-    color: #ffffff;
-    padding: 60px 0 20px;
-    font-family: Arial, sans-serif;
+  .custom-footer {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   }
-  .new-footer .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
-  .new-footer .newsletter-section {
+
+  .newsletter-section {
     text-align: center;
-    margin-bottom: 60px;
+    padding: 60px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .new-footer .newsletter-section h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
+
+  .newsletter-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: {{ section.settings.text_color }};
   }
-  .new-footer .newsletter-section p {
-    font-size: 18px;
+
+  .newsletter-section p {
+    font-size: 1rem;
     margin-bottom: 30px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .new-footer .newsletter-form {
+
+  .newsletter-form {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .new-footer .newsletter-form input {
-    width: 300px;
-    padding: 15px;
-    border: 1px solid #ffffff;
-    border-radius: 5px 0 0 5px;
-    background-color: #ffffff;
-    color: #000000;
-  }
-  .new-footer .newsletter-form button {
-    padding: 15px 30px;
-    border: 1px solid #ffffff;
-    background-color: #ffffff;
-    color: #0e3e4a;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 16px;
-  }
-    .new-footer .newsletter-form button:hover {
-    background-color: #e0e0e0;
-  }
-  .new-footer .unsubscribe-text {
-    font-size: 12px;
-    margin-top: 15px;
-  }
-  .new-footer .footer-content {
-    display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto 15px;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 250px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .newsletter-form button {
+    padding: 12px 30px;
+    background-color: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+
+  .newsletter-form button:hover {
+    opacity: 0.9;
+  }
+
+  .privacy-text {
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  .footer-main {
+    padding: 60px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
     margin-bottom: 40px;
   }
-  .new-footer .footer-column {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 20px;
+
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
   }
-  .new-footer .footer-column.logo-column {
-    flex: 2;
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
   }
-  .new-footer .logo-container {
+
+  .footer-brand {
+    max-width: 400px;
+  }
+
+  .footer-logo {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-  }
-  .new-footer .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  .new-footer .logo-text {
-    font-size: 24px;
-    font-weight: bold;
-  }
-    .new-footer .logo-subtext {
-    font-size: 14px;
-  }
-  .new-footer .logo-column p {
-    font-size: 14px;
-    line-height: 1.6;
-    max-width: 350px;
-  }
-  .new-footer .footer-column h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  .new-footer .footer-column ul {
-    list-style: none;
-    padding: 0;
-  }
-  .new-footer .footer-column ul li {
-    margin-bottom: 10px;
-  }
-  .new-footer .footer-column ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-  }
-   .new-footer .footer-column ul li a:hover {
-    text-decoration: underline;
-  }
-  .new-footer .contact-info {
-    border-top: 1px solid #3b5f6a;
-    padding-top: 30px;
-    margin-bottom: 30px;
-  }
-  .new-footer .contact-info-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 10px;
     margin-bottom: 15px;
   }
-  .new-footer .contact-item {
+
+  .footer-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+  }
+
+  .logo-text h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: {{ section.settings.text_color }};
+  }
+
+  .logo-text p {
+    font-size: 0.875rem;
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  .footer-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.85;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-item {
     display: flex;
     align-items: center;
-    margin: 0 20px;
-    font-size: 14px;
+    gap: 10px;
+    font-size: 0.95rem;
+    opacity: 0.85;
   }
-  .new-footer .contact-item i {
-    margin-right: 10px;
-    font-size: 18px;
+
+  .contact-icon {
+    width: 20px;
+    text-align: center;
   }
-  .new-footer .footer-bottom {
-    border-top: 1px solid #3b5f6a;
-    padding-top: 20px;
+
+  .footer-column h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: {{ section.settings.text_color }};
   }
-  .new-footer .copyright-social {
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    font-size: 0.95rem;
+  }
+
+  .footer-links a:hover {
+    opacity: 1;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+  }
+
+  .footer-bottom-content {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    gap: 20px;
   }
-  .new-footer .copyright-text {
-    font-size: 12px;
+
+  .footer-legal {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
   }
-    .new-footer .copyright-links {
-    margin-left: 20px;
-  }
-  .new-footer .copyright-links a {
-    color: #ffffff;
+
+  .footer-legal a {
+    color: {{ section.settings.text_color }};
     text-decoration: none;
-    margin: 0 10px;
-    font-size: 12px;
+    opacity: 0.6;
+    font-size: 0.875rem;
+    transition: opacity 0.3s;
   }
-   .new-footer .copyright-links a:hover {
-    text-decoration: underline;
+
+  .footer-legal a:hover {
+    opacity: 1;
   }
-  .new-footer .social-icons a {
-    color: #ffffff;
+
+  .copyright {
+    font-size: 0.875rem;
+    opacity: 0.6;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 15px;
+  }
+
+  .social-icons a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.text_color }};
     text-decoration: none;
-    margin-left: 15px;
-    font-size: 18px;
+    transition: background-color 0.3s;
   }
-  .new-footer .footer-features {
+
+  .social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .trust-badges {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 20px;
+  }
+
+  .trust-badges-content {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
+    gap: 40px;
+    flex-wrap: wrap;
   }
-  .new-footer .footer-features li {
+
+  .trust-badge {
     display: flex;
     align-items: center;
-    margin: 0 15px;
-    font-size: 14px;
+    gap: 10px;
+    font-size: 0.95rem;
   }
-  .new-footer .footer-features .dot {
+
+  .badge-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    margin-right: 8px;
   }
-  .new-footer .dot.green { background-color: #28a745; }
-  .new-footer .dot.blue { background-color: #007bff; }
-  .new-footer .dot.purple { background-color: #6f42c1; }
-  .new-footer .dot.yellow { background-color: #ffc107; }
+
+  @media (max-width: 768px) {
+    .newsletter-section h2 {
+      font-size: 2rem;
+    }
+    
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .footer-legal {
+      justify-content: center;
+    }
+  }
 </style>
 
-<footer class="new-footer">
-  <div class="container">
-    <div class="newsletter-section">
-      <h2>{{ section.settings.newsletter_title }}</h2>
-      <p>{{ section.settings.newsletter_subtitle }}</p>
-      <form class="newsletter-form" action="{{ section.settings.newsletter_action_url }}" method="post">
-        <input type="email" name="email" placeholder="{{ section.settings.newsletter_placeholder }}">
-        <button type="submit">{{ section.settings.newsletter_button_text }}</button>
-      </form>
-      <p class="unsubscribe-text">{{ section.settings.newsletter_unsubscribe_text }}</p>
-    </div>
+<footer class="custom-footer">
+  <!-- Newsletter Section -->
+  {% if section.settings.show_newsletter %}
+  <div class="newsletter-section">
+    <h2>{{ section.settings.newsletter_heading }}</h2>
+    <p>{{ section.settings.newsletter_text }}</p>
+    
+    {% form 'customer', class: 'newsletter-form' %}
+      {% if form.posted_successfully? %}
+        <p class="success-message">{{ section.settings.success_message }}</p>
+      {% endif %}
+      
+      <input 
+        type="email" 
+        name="contact[email]" 
+        placeholder="{{ section.settings.email_placeholder }}" 
+        required
+      >
+      <button type="submit">{{ section.settings.button_text }}</button>
+    {% endform %}
+    
+    <p class="privacy-text">{{ section.settings.privacy_text }}</p>
+  </div>
+  {% endif %}
 
-    <div class="footer-content">
-      <div class="footer-column logo-column">
-        <div class="logo-container">
-          {% if section.settings.logo %}
-            <img src="{{ section.settings.logo | img_url: 'master' }}" alt="NewGame Logo" class="logo">
+  <!-- Main Footer Content -->
+  <div class="footer-main">
+    <div class="footer-grid">
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          {% if section.settings.logo != blank %}
+            <img src="{{ section.settings.logo | img_url: '100x100' }}" alt="{{ shop.name }}">
           {% endif %}
-          <div>
-            <span class="logo-text">{{ section.settings.logo_text }}</span>
-            <div class="logo-subtext">{{ section.settings.logo_subtext }}</div>
+          <div class="logo-text">
+            <h3>{{ section.settings.brand_name }}</h3>
+            <p>{{ section.settings.brand_tagline }}</p>
           </div>
         </div>
-        <p>{{ section.settings.logo_description }}</p>
+        
+        <p class="footer-description">{{ section.settings.brand_description }}</p>
+        
+        <div class="footer-contact">
+          {% if section.settings.phone != blank %}
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span>{{ section.settings.phone }}</span>
+          </div>
+          {% endif %}
+          
+          {% if section.settings.email != blank %}
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <span>{{ section.settings.email }}</span>
+          </div>
+          {% endif %}
+          
+          {% if section.settings.address != blank %}
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>{{ section.settings.address }}</span>
+          </div>
+          {% endif %}
+        </div>
       </div>
 
+      <!-- Navigation Columns -->
       {% for block in section.blocks %}
-        {% if block.type == 'menu' %}
-          <div class="footer-column">
-            <h3>{{ block.settings.menu_title }}</h3>
-            <ul>
-              {% for link in linklists[block.settings.menu_handle].links %}
-                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
+        {% if block.type == 'link_list' %}
+        <div class="footer-column" {{ block.shopify_attributes }}>
+          <h4>{{ block.settings.heading }}</h4>
+          <ul class="footer-links">
+            {% for i in (1..8) %}
+              {% assign link_label = 'link_label_' | append: i %}
+              {% assign link_url = 'link_url_' | append: i %}
+              {% if block.settings[link_label] != blank %}
+                <li>
+                  <a href="{{ block.settings[link_url] }}">{{ block.settings[link_label] }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
         {% endif %}
       {% endfor %}
     </div>
+  </div>
 
-    <div class="contact-info">
-      <div class="contact-info-row">
-        <div class="contact-item"><i class="fas fa-phone-alt"></i> {{ section.settings.contact_phone }}</div>
-        <div class="contact-item"><i class="fas fa-envelope"></i> {{ section.settings.contact_email }}</div>
-        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> {{ section.settings.contact_address }}</div>
+  <!-- Bottom Section -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-content">
+      <div class="footer-legal">
+        <span class="copyright">{{ section.settings.copyright_text }}</span>
+        {% if section.settings.privacy_policy_link != blank %}
+          <a href="{{ section.settings.privacy_policy_link }}">Privacy Policy</a>
+        {% endif %}
+        {% if section.settings.terms_link != blank %}
+          <a href="{{ section.settings.terms_link }}">Terms of Service</a>
+        {% endif %}
+        {% if section.settings.cookie_policy_link != blank %}
+          <a href="{{ section.settings.cookie_policy_link }}">Cookie Policy</a>
+        {% endif %}
       </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="copyright-social">
-        <div class="copyright-text">
-          {{ section.settings.copyright_text }}
-          <span class="copyright-links">
-            <a href="{{ section.settings.privacy_policy_url }}">Privacy Policy</a>
-            <a href="{{ section.settings.terms_of_service_url }}">Terms of Service</a>
-            <a href="{{ section.settings.cookie_policy_url }}">Cookie Policy</a>
-          </span>
-        </div>
-        <div class="social-icons">
-          <a href="{{ section.settings.social_facebook_url }}"><i class="fab fa-facebook-f"></i></a>
-          <a href="{{ section.settings.social_twitter_url }}"><i class="fab fa-twitter"></i></a>
-          <a href="{{ section.settings.social_instagram_url }}"><i class="fab fa-instagram"></i></a>
-          <a href="{{ section.settings.social_youtube_url }}"><i class="fab fa-youtube"></i></a>
-        </div>
+      
+      <div class="social-icons">
+        {% if section.settings.facebook_url != blank %}
+          <a href="{{ section.settings.facebook_url }}" target="_blank" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        {% endif %}
+        
+        {% if section.settings.twitter_url != blank %}
+          <a href="{{ section.settings.twitter_url }}" target="_blank" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
+        {% endif %}
+        
+        {% if section.settings.instagram_url != blank %}
+          <a href="{{ section.settings.instagram_url }}" target="_blank" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+            </svg>
+          </a>
+        {% endif %}
+        
+        {% if section.settings.youtube_url != blank %}
+          <a href="{{ section.settings.youtube_url }}" target="_blank" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        {% endif %}
       </div>
-      <ul class="footer-features">
-        <li><span class="dot green"></span>{{ section.settings.feature1_text }}</li>
-        <li><span class="dot blue"></span>{{ section.settings.feature2_text }}</li>
-        <li><span class="dot purple"></span>{{ section.settings.feature3_text }}</li>
-        <li><span class="dot yellow"></span>{{ section.settings.feature4_text }}</li>
-      </ul>
     </div>
   </div>
+
+  <!-- Trust Badges -->
+  {% if section.settings.show_trust_badges %}
+  <div class="trust-badges">
+    <div class="trust-badges-content">
+      {% for block in section.blocks %}
+        {% if block.type == 'trust_badge' %}
+        <div class="trust-badge" {{ block.shopify_attributes }}>
+          <span class="badge-dot" style="background-color: {{ block.settings.badge_color }}"></span>
+          <span>{{ block.settings.badge_text }}</span>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 </footer>
 
 {% schema %}
 {
-  "name": "New Footer",
+  "name": "Custom Footer",
   "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#0c4a5f"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#ff6b35"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
     {
       "type": "header",
       "content": "Newsletter Section"
     },
     {
-      "type": "text",
-      "id": "newsletter_title",
-      "label": "Newsletter Title",
-      "default": "Stay in the Game!"
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter Section",
+      "default": true
     },
     {
       "type": "text",
-      "id": "newsletter_subtitle",
-      "label": "Newsletter Subtitle",
+      "id": "newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "Stay in the Game!"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter Description",
       "default": "Get the latest news, exclusive offers, and early access to new games delivered to your inbox."
     },
     {
       "type": "text",
-      "id": "newsletter_placeholder",
-      "label": "Newsletter Placeholder",
+      "id": "email_placeholder",
+      "label": "Email Placeholder",
       "default": "Enter your email"
     },
     {
       "type": "text",
-      "id": "newsletter_button_text",
-      "label": "Newsletter Button Text",
+      "id": "button_text",
+      "label": "Button Text",
       "default": "Subscribe"
     },
     {
       "type": "text",
-      "id": "newsletter_unsubscribe_text",
-      "label": "Unsubscribe Text",
+      "id": "privacy_text",
+      "label": "Privacy Text",
       "default": "No spam, unsubscribe at any time. We respect your privacy."
     },
     {
-      "type": "url",
-      "id": "newsletter_action_url",
-      "label": "Newsletter Form Action URL"
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Thanks for subscribing!"
     },
     {
       "type": "header",
-      "content": "Logo Column"
+      "content": "Brand Information"
     },
     {
       "type": "image_picker",
       "id": "logo",
-      "label": "Logo Image"
+      "label": "Footer Logo"
     },
     {
       "type": "text",
-      "id": "logo_text",
-      "label": "Logo Text",
+      "id": "brand_name",
+      "label": "Brand Name",
       "default": "NewGame"
     },
     {
       "type": "text",
-      "id": "logo_subtext",
-      "label": "Logo Subtext",
+      "id": "brand_tagline",
+      "label": "Brand Tagline",
       "default": "Board Game Store"
     },
     {
       "type": "textarea",
-      "id": "logo_description",
-      "label": "Logo Column Description",
+      "id": "brand_description",
+      "label": "Brand Description",
       "default": "Your premier destination for board games, accessories, and unforgettable gaming experiences. From casual family fun to competitive tournaments, we bring people together through the joy of gaming."
     },
     {
       "type": "header",
-      "content": "Contact Info"
+      "content": "Contact Information"
     },
     {
       "type": "text",
-      "id": "contact_phone",
+      "id": "phone",
       "label": "Phone Number",
       "default": "(555) 123-4567"
     },
     {
       "type": "text",
-      "id": "contact_email",
+      "id": "email",
       "label": "Email Address",
       "default": "hello@newgame.com"
     },
     {
       "type": "text",
-      "id": "contact_address",
-      "label": "Mailing Address",
+      "id": "address",
+      "label": "Physical Address",
       "default": "123 Game Street, Board City, BC 12345"
     },
     {
       "type": "header",
-      "content": "Footer Bottom"
+      "content": "Bottom Section"
     },
     {
       "type": "text",
@@ -365,99 +582,244 @@
     },
     {
       "type": "url",
-      "id": "privacy_policy_url",
+      "id": "privacy_policy_link",
       "label": "Privacy Policy URL"
     },
     {
       "type": "url",
-      "id": "terms_of_service_url",
+      "id": "terms_link",
       "label": "Terms of Service URL"
     },
     {
       "type": "url",
-      "id": "cookie_policy_url",
+      "id": "cookie_policy_link",
       "label": "Cookie Policy URL"
     },
     {
       "type": "header",
-      "content": "Social Media Links"
+      "content": "Social Media"
     },
     {
       "type": "url",
-      "id": "social_facebook_url",
+      "id": "facebook_url",
       "label": "Facebook URL"
     },
     {
       "type": "url",
-      "id": "social_twitter_url",
+      "id": "twitter_url",
       "label": "Twitter URL"
     },
     {
       "type": "url",
-      "id": "social_instagram_url",
+      "id": "instagram_url",
       "label": "Instagram URL"
     },
     {
       "type": "url",
-      "id": "social_youtube_url",
+      "id": "youtube_url",
       "label": "YouTube URL"
     },
     {
       "type": "header",
-      "content": "Footer Features"
+      "content": "Trust Badges"
     },
     {
-      "type": "text",
-      "id": "feature1_text",
-      "label": "Feature 1 Text",
-      "default": "SSL Secure"
-    },
-    {
-      "type": "text",
-      "id": "feature2_text",
-      "label": "Feature 2 Text",
-      "default": "Free Shipping $75+"
-    },
-    {
-      "type": "text",
-      "id": "feature3_text",
-      "label": "Feature 3 Text",
-      "default": "30-Day Returns"
-    },
-    {
-      "type": "text",
-      "id": "feature4_text",
-      "label": "Feature 4 Text",
-      "default": "Customer Support"
+      "type": "checkbox",
+      "id": "show_trust_badges",
+      "label": "Show Trust Badges",
+      "default": true
     }
   ],
   "blocks": [
     {
-      "type": "menu",
-      "name": "Menu",
+      "type": "link_list",
+      "name": "Navigation Column",
       "settings": [
         {
           "type": "text",
-          "id": "menu_title",
-          "label": "Menu Title"
+          "id": "heading",
+          "label": "Column Heading",
+          "default": "Shop"
+        },
+        {
+          "type": "text",
+          "id": "link_label_1",
+          "label": "Link 1 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_1",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_label_2",
+          "label": "Link 2 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_2",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_label_3",
+          "label": "Link 3 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_3",
+          "label": "Link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_label_4",
+          "label": "Link 4 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_4",
+          "label": "Link 4 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_label_5",
+          "label": "Link 5 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_5",
+          "label": "Link 5 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_label_6",
+          "label": "Link 6 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_6",
+          "label": "Link 6 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_label_7",
+          "label": "Link 7 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_7",
+          "label": "Link 7 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_label_8",
+          "label": "Link 8 Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url_8",
+          "label": "Link 8 URL"
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "SSL Secure"
+        },
+        {
+          "type": "color",
+          "id": "badge_color",
+          "label": "Badge Color",
+          "default": "#4CAF50"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "blocks": [
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "link_label_1": "All Games",
+            "link_label_2": "Strategy Games",
+            "link_label_3": "Family Games",
+            "link_label_4": "Party Games",
+            "link_label_5": "Accessories"
+          }
         },
         {
           "type": "link_list",
-          "id": "menu_handle",
-          "label": "Menu"
+          "settings": {
+            "heading": "Company",
+            "link_label_1": "About Us",
+            "link_label_2": "Our Story",
+            "link_label_3": "Careers",
+            "link_label_4": "Press",
+            "link_label_5": "Blog"
+          }
+        },
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Services",
+            "link_label_1": "Custom Design",
+            "link_label_2": "Private Events",
+            "link_label_3": "Team Building",
+            "link_label_4": "Game Rental",
+            "link_label_5": "Workshops"
+          }
+        },
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "link_label_1": "Contact Us",
+            "link_label_2": "FAQ",
+            "link_label_3": "Shipping Info",
+            "link_label_4": "Returns",
+            "link_label_5": "Size Guide"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "badge_text": "SSL Secure",
+            "badge_color": "#4CAF50"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "badge_text": "Free Shipping $75+",
+            "badge_color": "#2196F3"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "badge_text": "30-Day Returns",
+            "badge_color": "#9C27B0"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "badge_text": "Customer Support",
+            "badge_color": "#FF9800"
+          }
         }
-      ],
-      "limit": 4
+      ]
     }
-  ],
-  "default": {
-    "settings": {},
-    "blocks": [
-      { "type": "menu" },
-      { "type": "menu" },
-      { "type": "menu" },
-      { "type": "menu" }
-    ]
-  }
+  ]
 }
 {% endschema %}
