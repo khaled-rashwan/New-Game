@@ -98,19 +98,122 @@
               "badge_text": "SSL Secure",
               "badge_color": "#4caf50"
             }
+          },
+          "link_list_igpeBU": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Shop",
+              "link_label_1": "All Games",
+              "link_url_1": "#",
+              "link_label_2": "Strategy Games",
+              "link_url_2": "#",
+              "link_label_3": "Family Games",
+              "link_url_3": "#",
+              "link_label_4": "Party Games",
+              "link_url_4": "#",
+              "link_label_5": "Accessories",
+              "link_url_5": "#",
+              "link_label_6": "",
+              "link_url_6": "",
+              "link_label_7": "",
+              "link_url_7": "",
+              "link_label_8": "",
+              "link_url_8": ""
+            }
+          },
+          "link_list_BhDAn6": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Company",
+              "link_label_1": "About Us",
+              "link_url_1": "",
+              "link_label_2": "Our Story",
+              "link_url_2": "",
+              "link_label_3": "Careers",
+              "link_url_3": "",
+              "link_label_4": "Press",
+              "link_url_4": "",
+              "link_label_5": "Blog",
+              "link_url_5": "",
+              "link_label_6": "",
+              "link_url_6": "",
+              "link_label_7": "",
+              "link_url_7": "",
+              "link_label_8": "",
+              "link_url_8": ""
+            }
+          },
+          "link_list_aq8hC6": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Services",
+              "link_label_1": "Custom Design",
+              "link_url_1": "",
+              "link_label_2": "Private Events",
+              "link_url_2": "",
+              "link_label_3": "Team Building",
+              "link_url_3": "",
+              "link_label_4": "Game Rental",
+              "link_url_4": "",
+              "link_label_5": "Workshops",
+              "link_url_5": "",
+              "link_label_6": "",
+              "link_url_6": "",
+              "link_label_7": "",
+              "link_url_7": "",
+              "link_label_8": "",
+              "link_url_8": ""
+            }
+          },
+          "link_list_HVQrrP": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Support",
+              "link_label_1": "Contact Us",
+              "link_url_1": "",
+              "link_label_2": "FAQ",
+              "link_url_2": "",
+              "link_label_3": "Shipping Info",
+              "link_url_3": "",
+              "link_label_4": "Returns",
+              "link_url_4": "",
+              "link_label_5": "Size Guide",
+              "link_url_5": "",
+              "link_label_6": "",
+              "link_url_6": "",
+              "link_label_7": "",
+              "link_url_7": "",
+              "link_label_8": "",
+              "link_url_8": ""
+            }
           }
         },
         "block_order": [
           "trust_badge_DKd6kA",
           "trust_badge_na8fjf",
           "trust_badge_3D4AkP",
-          "trust_badge_jzitWk"
+          "trust_badge_jzitWk",
+          "link_list_igpeBU",
+          "link_list_BhDAn6",
+          "link_list_aq8hC6",
+          "link_list_HVQrrP"
         ],
         "settings": {
           "background_color": "#0c4a5f",
           "text_color": "#ffffff",
           "button_color": "#ff6b35",
           "button_text_color": "#ffffff",
+          "newsletter_heading_size": 48,
+          "newsletter_text_size": 18,
+          "input_text_size": 17,
+          "button_text_size": 17,
+          "brand_name_size": 28,
+          "brand_tagline_size": 16,
+          "body_text_size": 17,
+          "column_heading_size": 20,
+          "link_text_size": 17,
+          "small_text_size": 15,
+          "badge_text_size": 17,
           "show_newsletter": true,
           "newsletter_heading": "Stay in the Game!",
           "newsletter_text": "Get the latest news, exclusive offers, and early access to new games delivered to your inbox.",
