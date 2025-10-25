@@ -17,14 +17,14 @@
   }
 
   .newsletter-section h2 {
-    font-size: 3rem;
+    font-size: {{ section.settings.newsletter_heading_size }}px;
     font-weight: 700;
     margin-bottom: 15px;
     color: {{ section.settings.text_color }};
   }
 
   .newsletter-section p {
-    font-size: 2rem;
+    font-size: {{ section.settings.newsletter_text_size }}px;
     margin-bottom: 30px;
     opacity: 0.9;
     max-width: 600px;
@@ -47,7 +47,7 @@
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
-    font-size: 2rem;
+    font-size: {{ section.settings.input_text_size }}px;
   }
 
   .newsletter-form button {
@@ -56,7 +56,7 @@
     color: {{ section.settings.button_text_color }};
     border: none;
     border-radius: 4px;
-    font-size: 2rem;
+    font-size: {{ section.settings.button_text_size }}px;
     font-weight: 600;
     cursor: pointer;
     transition: opacity 0.3s;
@@ -67,7 +67,7 @@
   }
 
   .privacy-text {
-    font-size: 1rem;
+    font-size: {{ section.settings.small_text_size }}px;
     opacity: 0.7;
   }
 
@@ -115,20 +115,20 @@
   }
 
   .logo-text h3 {
-    font-size: 2.5rem;
+    font-size: {{ section.settings.brand_name_size }}px;
     font-weight: 700;
     margin: 0;
     color: {{ section.settings.text_color }};
   }
 
   .logo-text p {
-    font-size: 1rem;
+    font-size: {{ section.settings.brand_tagline_size }}px;
     margin: 0;
     opacity: 0.7;
   }
 
   .footer-description {
-    font-size: 1.5rem;
+    font-size: {{ section.settings.body_text_size }}px;
     line-height: 1.6;
     margin-bottom: 25px;
     opacity: 0.85;
@@ -144,17 +144,32 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
+    font-size: {{ section.settings.body_text_size }}px;
     opacity: 0.85;
   }
 
   .contact-icon {
     width: 20px;
-    text-align: center;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .contact-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .footer-column h4 {
-    font-size: 2.1rem;
+    font-size: {{ section.settings.column_heading_size }}px;
     font-weight: 600;
     margin-bottom: 20px;
     color: {{ section.settings.text_color }};
@@ -175,7 +190,7 @@
     text-decoration: none;
     opacity: 0.8;
     transition: opacity 0.3s;
-    font-size: 1.5rem;
+    font-size: {{ section.settings.link_text_size }}px;
   }
 
   .footer-links a:hover {
@@ -208,7 +223,7 @@
     color: {{ section.settings.text_color }};
     text-decoration: none;
     opacity: 0.6;
-    font-size: 1rem;
+    font-size: {{ section.settings.small_text_size }}px;
     transition: opacity 0.3s;
   }
 
@@ -217,7 +232,7 @@
   }
 
   .copyright {
-    font-size: 1.5rem;
+    font-size: {{ section.settings.small_text_size }}px;
     opacity: 0.6;
   }
 
@@ -261,7 +276,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
+    font-size: {{ section.settings.badge_text_size }}px;
   }
 
   .badge-dot {
@@ -272,7 +287,7 @@
 
   @media (max-width: 768px) {
     .newsletter-section h2 {
-      font-size: 2.5rem;
+      font-size: calc({{ section.settings.newsletter_heading_size }}px * 0.8);
     }
     
     .footer-bottom-content {
@@ -331,21 +346,45 @@
         <div class="footer-contact">
           {% if section.settings.phone != blank %}
           <div class="contact-item">
-            <span class="contact-icon">📞</span>
+            <span class="contact-icon">
+              {% if section.settings.phone_icon != blank %}
+                <img src="{{ section.settings.phone_icon | img_url: '40x40' }}" alt="Phone">
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                </svg>
+              {% endif %}
+            </span>
             <span>{{ section.settings.phone }}</span>
           </div>
           {% endif %}
           
           {% if section.settings.email != blank %}
           <div class="contact-item">
-            <span class="contact-icon">✉️</span>
+            <span class="contact-icon">
+              {% if section.settings.email_icon != blank %}
+                <img src="{{ section.settings.email_icon | img_url: '40x40' }}" alt="Email">
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              {% endif %}
+            </span>
             <span>{{ section.settings.email }}</span>
           </div>
           {% endif %}
           
           {% if section.settings.address != blank %}
           <div class="contact-item">
-            <span class="contact-icon">📍</span>
+            <span class="contact-icon">
+              {% if section.settings.location_icon != blank %}
+                <img src="{{ section.settings.location_icon | img_url: '40x40' }}" alt="Location">
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              {% endif %}
+            </span>
             <span>{{ section.settings.address }}</span>
           </div>
           {% endif %}
@@ -477,6 +516,120 @@
     },
     {
       "type": "header",
+      "content": "Font Sizes"
+    },
+    {
+      "type": "range",
+      "id": "newsletter_heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Newsletter Heading Size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "newsletter_text_size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Newsletter Text Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "input_text_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Input Field Text Size",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Text Size",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "brand_name_size",
+      "min": 18,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Brand Name Size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "brand_tagline_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Brand Tagline Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_text_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Text Size (Description & Contact)",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "column_heading_size",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Column Heading Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "link_text_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Navigation Link Size",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "small_text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Small Text Size (Copyright, Privacy)",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "badge_text_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Trust Badge Text Size",
+      "default": 17
+    },
+    {
+      "type": "header",
       "content": "Newsletter Section"
     },
     {
@@ -559,16 +712,34 @@
       "default": "(555) 123-4567"
     },
     {
+      "type": "image_picker",
+      "id": "phone_icon",
+      "label": "Phone Icon (Optional)",
+      "info": "Upload a custom icon for phone. Leave empty to use default icon."
+    },
+    {
       "type": "text",
       "id": "email",
       "label": "Email Address",
       "default": "hello@newgame.com"
     },
     {
+      "type": "image_picker",
+      "id": "email_icon",
+      "label": "Email Icon (Optional)",
+      "info": "Upload a custom icon for email. Leave empty to use default icon."
+    },
+    {
       "type": "text",
       "id": "address",
       "label": "Physical Address",
       "default": "123 Game Street, Board City, BC 12345"
+    },
+    {
+      "type": "image_picker",
+      "id": "location_icon",
+      "label": "Location Icon (Optional)",
+      "info": "Upload a custom icon for location. Leave empty to use default icon."
     },
     {
       "type": "header",
