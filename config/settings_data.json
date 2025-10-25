@@ -105,7 +105,7 @@
           "show_wishlist": true,
           "wishlist_url": "",
           "show_cart": true,
-          "show_account_link": false,
+          "show_account_link": true,
           "account_icon": "shopify://shop_images/Button.svg",
           "show_login_button": true,
           "login_button_text": "Login/Signup",
