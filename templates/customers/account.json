@@ -1,7 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
-      "type": "main-account"
+      "type": "main-account",
+      "blocks": {
+        "action_card_hbqbVH": {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Personal Info",
+            "action_description": "Update your personal details",
+            "action_url": "",
+            "icon": "user",
+            "icon_bg": "#ede9fe",
+            "icon_color": "#7c3aed"
+          }
+        },
+        "action_card_RiH6fm": {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Personal Info",
+            "action_description": "Update your personal details",
+            "action_url": "",
+            "icon": "orders",
+            "icon_bg": "#ede9fe",
+            "icon_color": "#7c3aed"
+          }
+        },
+        "action_card_afPQwX": {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Personal Info",
+            "action_description": "Update your personal details",
+            "action_url": "",
+            "icon": "user",
+            "icon_bg": "#ede9fe",
+            "icon_color": "#7c3aed"
+          }
+        },
+        "action_card_JVdmCP": {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Personal Info",
+            "action_description": "Update your personal details",
+            "action_url": "",
+            "icon": "user",
+            "icon_bg": "#ede9fe",
+            "icon_color": "#7c3aed"
+          }
+        },
+        "action_card_LFriCP": {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Personal Info",
+            "action_description": "Update your personal details",
+            "action_url": "",
+            "icon": "user",
+            "icon_bg": "#ede9fe",
+            "icon_color": "#7c3aed"
+          }
+        },
+        "action_card_mzN7YT": {
+          "type": "action_card",
+          "settings": {
+            "action_title": "Personal Info",
+            "action_description": "Update your personal details",
+            "action_url": "",
+            "icon": "user",
+            "icon_bg": "#ede9fe",
+            "icon_color": "#7c3aed"
+          }
+        },
+        "activity_item_LGQ4ir": {
+          "type": "activity_item",
+          "settings": {
+            "activity_text": "Order #ORD-001 was delivered",
+            "activity_time": "2 hours ago",
+            "activity_icon": "package"
+          }
+        }
+      },
+      "block_order": [
+        "action_card_hbqbVH",
+        "action_card_RiH6fm",
+        "action_card_afPQwX",
+        "action_card_JVdmCP",
+        "action_card_LFriCP",
+        "action_card_mzN7YT",
+        "activity_item_LGQ4ir"
+      ],
+      "settings": {
+        "container_width": 1200,
+        "section_padding": 40,
+        "card_background": "#ffffff",
+        "card_border": "#e5e5e5",
+        "text_color": "#1a1a1a",
+        "text_secondary": "#6b7280",
+        "primary_color": "#1976d2",
+        "card_radius": 12,
+        "card_padding": 24,
+        "welcome_text": "Welcome back,",
+        "welcome_heading_size": 28,
+        "email_size": 15,
+        "avatar_size": 80,
+        "avatar_background": "#e5e5e5",
+        "avatar_text_color": "#666666",
+        "show_membership_badge": true,
+        "membership_badge_text": "Gold Member",
+        "gold_badge_bg": "#fef3c7",
+        "gold_badge_text": "#92400e",
+        "badge_size": 13,
+        "member_since_text": "Member since",
+        "orders_label": "Total Orders",
+        "spent_label": "Total Spent",
+        "show_loyalty_points": true,
+        "loyalty_label": "Loyalty Points",
+        "loyalty_points": "3,420",
+        "show_wishlist_count": true,
+        "wishlist_label": "Wishlist Items",
+        "wishlist_count": "12",
+        "stat_label_size": 14,
+        "stat_value_size": 28,
+        "actions_title": "Quick Actions",
+        "actions_subtitle": "Access your account sections",
+        "section_title_size": 24,
+        "section_subtitle_size": 15,
+        "action_title_size": 16,
+        "action_desc_size": 14,
+        "show_recent_orders": true,
+        "orders_title": "Recent Orders",
+        "orders_subtitle": "Your latest purchases",
+        "view_all_text": "View All Orders",
+        "no_orders_text": "You haven't placed any orders yet",
+        "order_title_size": 16,
+        "order_subtitle_size": 14,
+        "order_price_size": 17,
+        "status_size": 13,
+        "button_size": 14,
+        "show_recent_activity": true,
+        "activity_title": "Recent Activity",
+        "activity_subtitle": "Your latest account activity",
+        "activity_title_size": 15,
+        "activity_time_size": 13
+      }
     }
   },
   "order": [
