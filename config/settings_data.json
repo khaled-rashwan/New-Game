@@ -70,6 +70,42 @@
       },
       "footer": {
         "type": "footer",
+        "blocks": {
+          "trust_badge_DKd6kA": {
+            "type": "trust_badge",
+            "settings": {
+              "badge_text": "SSL Secure",
+              "badge_color": "#4caf50"
+            }
+          },
+          "trust_badge_na8fjf": {
+            "type": "trust_badge",
+            "settings": {
+              "badge_text": "SSL Secure",
+              "badge_color": "#4caf50"
+            }
+          },
+          "trust_badge_3D4AkP": {
+            "type": "trust_badge",
+            "settings": {
+              "badge_text": "SSL Secure",
+              "badge_color": "#4caf50"
+            }
+          },
+          "trust_badge_jzitWk": {
+            "type": "trust_badge",
+            "settings": {
+              "badge_text": "SSL Secure",
+              "badge_color": "#4caf50"
+            }
+          }
+        },
+        "block_order": [
+          "trust_badge_DKd6kA",
+          "trust_badge_na8fjf",
+          "trust_badge_3D4AkP",
+          "trust_badge_jzitWk"
+        ],
         "settings": {
           "background_color": "#0c4a5f",
           "text_color": "#ffffff",
