@@ -73,7 +73,7 @@
             "action_title": "Personal Info",
             "action_description": "Update your personal details",
             "action_url": "",
-            "icon": "user",
+            "icon": "settings",
             "icon_bg": "#ede9fe",
             "icon_color": "#7c3aed"
           }
