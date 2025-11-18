@@ -11,7 +11,34 @@
   "sections": {
     "main": {
       "type": "wishlist",
-      "settings": {}
+      "settings": {
+        "container_width": 1200,
+        "section_padding": 60,
+        "show_back_button": false,
+        "back_text": "Back to Profile",
+        "back_link": "shopify://policies/privacy-policy",
+        "page_title": "My Wishlist",
+        "page_subtitle": "Your saved games and items",
+        "text_color": "#1a1a1a",
+        "text_secondary": "#666666",
+        "primary_color": "#1976d2",
+        "card_bg": "#ffffff",
+        "border_color": "#e5e5e5",
+        "button_bg": "#1a1a1a",
+        "button_text": "#ffffff",
+        "button_hover": "#333333",
+        "hover_bg": "#f5f5f5",
+        "title_size": 32,
+        "subtitle_size": 16,
+        "product_title_size": 16,
+        "price_size": 20,
+        "card_radius": 12,
+        "empty_title": "Your Wishlist is Empty",
+        "empty_subtitle": "Start adding games you love!",
+        "shop_button_text": "Start Shopping",
+        "shop_link": "",
+        "remove_after_add": false
+      }
     }
   },
   "order": [
