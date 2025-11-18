@@ -33,40 +33,56 @@
       "header": {
         "type": "header",
         "blocks": {
-          "nav_link_PDUnU3": {
-            "type": "nav_link",
-            "settings": {
-              "link_text": "About Us",
-              "link_url": "shopify://pages/about-u-s"
-            }
-          },
           "nav_link_NhQP9f": {
             "type": "nav_link",
             "settings": {
-              "link_text": "About",
-              "link_url": "#"
+              "link_text": "Games",
+              "link_url": "shopify://collections/games"
             }
           },
           "nav_link_z8if7W": {
             "type": "nav_link",
             "settings": {
-              "link_text": "About",
-              "link_url": "#"
+              "link_text": "Accessories",
+              "link_url": "shopify://collections/accessories"
             }
           },
           "nav_link_pfhcgM": {
             "type": "nav_link",
             "settings": {
+              "link_text": "Events",
+              "link_url": "shopify://pages/events"
+            }
+          },
+          "nav_link_eNEVaU": {
+            "type": "nav_link",
+            "settings": {
+              "link_text": "Services",
+              "link_url": "shopify://pages/services"
+            }
+          },
+          "nav_link_PDUnU3": {
+            "type": "nav_link",
+            "settings": {
               "link_text": "About",
-              "link_url": "#"
+              "link_url": "shopify://pages/about-u-s"
+            }
+          },
+          "nav_link_ELiaEd": {
+            "type": "nav_link",
+            "settings": {
+              "link_text": "Contact",
+              "link_url": "shopify://pages/contact"
             }
           }
         },
         "block_order": [
-          "nav_link_PDUnU3",
           "nav_link_NhQP9f",
           "nav_link_z8if7W",
-          "nav_link_pfhcgM"
+          "nav_link_pfhcgM",
+          "nav_link_eNEVaU",
+          "nav_link_PDUnU3",
+          "nav_link_ELiaEd"
         ],
         "settings": {
           "container_width": 1400,
