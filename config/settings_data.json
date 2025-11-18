@@ -36,8 +36,8 @@
           "nav_link_PDUnU3": {
             "type": "nav_link",
             "settings": {
-              "link_text": "About",
-              "link_url": "#"
+              "link_text": "About Us",
+              "link_url": "shopify://pages/about-u-s"
             }
           },
           "nav_link_NhQP9f": {
@@ -82,7 +82,6 @@
           "button_text_color": "#ffffff",
           "badge_background": "#ff0000",
           "badge_text_color": "#ffffff",
-          "logo": "shopify://shop_images/73542b279f7f4ac3f8146ed85870df7735521010.png",
           "logo_height": 40,
           "show_logo_text": true,
           "logo_text": "NewGame",
@@ -269,16 +268,12 @@
           "button_text": "Subscribe",
           "privacy_text": "No spam, unsubscribe at any time. We respect your privacy.",
           "success_message": "Thanks for subscribing!",
-          "logo": "shopify://shop_images/73542b279f7f4ac3f8146ed85870df7735521010.png",
           "brand_name": "NewGame",
           "brand_tagline": "Board Game Store",
           "brand_description": "Your premier destination for board games, accessories, and unforgettable gaming experiences. From casual family fun to competitive tournaments, we bring people together through the joy of gaming.",
           "phone": "(555) 123-4567",
-          "phone_icon": "shopify://shop_images/SVG_72.svg",
           "email": "hello@newgame.com",
-          "email_icon": "shopify://shop_images/SVG_73.svg",
           "address": "123 Game Street, Board City, BC 12345",
-          "location_icon": "shopify://shop_images/SVG_74.svg",
           "copyright_text": "© 2024 NewGame. All rights reserved.",
           "privacy_policy_link": "#",
           "terms_link": "#",
