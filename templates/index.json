@@ -143,6 +143,44 @@
         "secondary_text": "Join an Event",
         "secondary_link": ""
       }
+    },
+    "services_testimonials_ATLAqf": {
+      "type": "services-testimonials",
+      "blocks": {
+        "testimonial_UprxA6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The team-building session was fantastic! Our team learned so much about collaboration through strategic games.",
+            "author_name": "Sarah Johnson",
+            "author_title": "Tech Innovations Inc."
+          }
+        },
+        "testimonial_RMBqd7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "NewGame made our corporate event unforgettable. Professional service and amazing game selection!",
+            "author_name": "Mike Chen",
+            "author_title": "Event Organizer"
+          }
+        },
+        "testimonial_mTqNeA": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "They brought our game concept to life perfectly. The design process was smooth and the final product exceeded expectations.",
+            "author_name": "Lisa Rodriguez",
+            "author_title": "Creative Studios"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_UprxA6",
+        "testimonial_RMBqd7",
+        "testimonial_mTqNeA"
+      ],
+      "name": "Services Testimonials",
+      "settings": {
+        "title": "What Our Clients Say"
+      }
     }
   },
   "order": [
@@ -150,6 +188,7 @@
     "home_features",
     "home_products",
     "home_services",
+    "services_testimonials_ATLAqf",
     "home_cta"
   ]
 }
