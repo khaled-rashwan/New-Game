@@ -131,19 +131,6 @@
         "subtitle": "From custom design to unforgettable events."
       }
     },
-    "home_cta": {
-      "type": "home-cta",
-      "settings": {
-        "title": "Ready to Start Your Gaming Journey?",
-        "subtitle": "Discover amazing games and create unforgettable memories.",
-        "show_primary_button": true,
-        "primary_text": "Start Shopping",
-        "primary_link": "",
-        "show_secondary_button": true,
-        "secondary_text": "Join an Event",
-        "secondary_link": ""
-      }
-    },
     "services_testimonials_ATLAqf": {
       "type": "services-testimonials",
       "blocks": {
@@ -180,6 +167,19 @@
       "name": "Services Testimonials",
       "settings": {
         "title": "What Our Clients Say"
+      }
+    },
+    "home_cta": {
+      "type": "home-cta",
+      "settings": {
+        "title": "Ready to Start Your Gaming Journey?",
+        "subtitle": "Discover amazing games and create unforgettable memories.",
+        "show_primary_button": true,
+        "primary_text": "Start Shopping",
+        "primary_link": "",
+        "show_secondary_button": true,
+        "secondary_text": "Join an Event",
+        "secondary_link": ""
       }
     }
   },
